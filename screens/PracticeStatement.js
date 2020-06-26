@@ -4,11 +4,15 @@ import { StyleSheet, View, Text, ScrollView} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons'
 import { TextInput } from 'react-native-gesture-handler';
 import * as Animatable from 'react-native-animatable';
+import ReadMore from 'react-native-read-more-text';
+import { render } from 'react-dom';
 
 const PracticeStatement = props => {
+
     return (
         <View style={styles.screen}>
-            <Icon name="ios-help" style={{fontSize:40, textAlign: 'right', marginRight: 15}}/>
+
+            <Icon name="ios-help-circle" style={{fontSize:40, textAlign: 'right', marginRight: 15}}/>
 
             <Text style ={styles.text}>IBD Tool</Text>
             <Text style ={styles.subtext}>Short bowel syndrome</Text>
@@ -22,45 +26,40 @@ const PracticeStatement = props => {
             <ScrollView>
                 <Text style ={styles.listheading}>Practice Statement</Text>
 
-                <View style={{flexDirection: 'row', justifyContent: 'space-between', marginRight: 20, alignItems: 'center'}}>
-                    <Text numberOfLines={2} style ={styles.listtext}>Calcium intake should be assessed in CD and UC patients and patients may not meet the recommended intake. (GRADE very low quality)</Text>
-                    <Icon name="ios-add-circle" style={{fontSize:30}}/>
+                <View style ={styles.listtext}>
+                <ReadMore numberOfLines={2}>
+                <Text style ={styles.practicetext}>Calcium intake should be assessed in CD 
+                nd UC patients and patients may not meet the
+                 recommended intake. (GRADE very low quality)</Text>
+                </ReadMore>
                 </View>
 
-                <View style={{flexDirection: 'row', justifyContent: 'space-between', marginRight: 20, alignItems: 'center'}}>
-                    <Text numberOfLines={2} style ={styles.listtext}>Calcium intake should be assessed in CD and UC patients and patients may not meet the recommended intake. (GRADE very low quality)</Text>
-                    <Icon name="ios-add-circle" style={{fontSize:30}}/>
+                <View style ={styles.listtext}>
+                <ReadMore numberOfLines={2}>
+                <Text style ={styles.practicetext}>
+                    A comprehensive nutritional assessment in IBD patients
+                    includes the following micronutrients: folic acid, 
+                    vitamin B12, vitamin D, iron, zinc, magnesium and selenium.
+                     Review recent tests and determine the frequency of monitoring 
+                     depending on disease activity, dietary intake and micronutrient 
+                     supplementation</Text>
+                </ReadMore>
                 </View>
 
-                <View style={{flexDirection: 'row', justifyContent: 'space-between', marginRight: 20, alignItems: 'center'}}>
-                    <Text numberOfLines={2} style ={styles.listtext}>Calcium intake should be assessed in CD and UC patients and patients may not meet the recommended intake. (GRADE very low quality)</Text>
-                    <Icon name="ios-add-circle" style={{fontSize:30}}/>
+                <View style ={styles.listtext}>
+                <ReadMore numberOfLines={2}>
+                <Text style ={styles.practicetext}>Calcium intake should be assessed in CD 
+                nd UC patients and patients may not meet the
+                 recommended intake. (GRADE very low quality)</Text>
+                </ReadMore>
                 </View>
 
-                <View style={{flexDirection: 'row', justifyContent: 'space-between', marginRight: 20, alignItems: 'center'}}>
+                {/* <View style={{flexDirection: 'row', justifyContent: 'space-between', marginRight: 20, alignItems: 'center'}}>
                     <Text numberOfLines={2} style ={styles.listtext}>Calcium intake should be assessed in CD and UC patients and patients may not meet the recommended intake. (GRADE very low quality)</Text>
                     <Icon name="ios-add-circle" style={{fontSize:30}}/>
-                </View>
+                </View> */}
 
-                <View style={{flexDirection: 'row', justifyContent: 'space-between', marginRight: 20, alignItems: 'center'}}>
-                    <Text numberOfLines={2} style ={styles.listtext}>Calcium intake should be assessed in CD and UC patients and patients may not meet the recommended intake. (GRADE very low quality)</Text>
-                    <Icon name="ios-add-circle" style={{fontSize:30}}/>
-                </View>
-
-                <View style={{flexDirection: 'row', justifyContent: 'space-between', marginRight: 20, alignItems: 'center'}}>
-                    <Text numberOfLines={2} style ={styles.listtext}>Calcium intake should be assessed in CD and UC patients and patients may not meet the recommended intake. (GRADE very low quality)</Text>
-                    <Icon name="ios-add-circle" style={{fontSize:30}}/>
-                </View>
-
-                <View style={{flexDirection: 'row', justifyContent: 'space-between', marginRight: 20, alignItems: 'center'}}>
-                    <Text numberOfLines={2} style ={styles.listtext}>Calcium intake should be assessed in CD and UC patients and patients may not meet the recommended intake. (GRADE very low quality)</Text>
-                    <Icon name="ios-add-circle" style={{fontSize:30}}/>
-                </View>
-
-                <View style={{flexDirection: 'row', justifyContent: 'space-between', marginRight: 20, alignItems: 'center'}}>
-                    <Text numberOfLines={2} style ={styles.listtext}>Calcium intake should be assessed in CD and UC patients and patients may not meet the recommended intake. (GRADE very low quality)</Text>
-                    <Icon name="ios-add-circle" style={{fontSize:30}}/>
-                </View>
+              
 
             </ScrollView>
 
@@ -88,8 +87,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         borderRadius: 15,
         borderWidth: 1,
-        marginVertical: 20,
-        // marginBottom: 60
+        marginVertical: 20
     },
 
     text: {
@@ -104,14 +102,16 @@ const styles = StyleSheet.create({
         textDecorationLine: 'underline',
     },
     listtext: {
+        padding: 5,
+        marginTop: 5,
+        marginLeft: 8,
+        marginBottom: '-2%'
+    },
+    practicetext: {
         fontSize: 16,
         color: 'blue',
         textDecorationLine: 'underline',
-        padding: 6,
-        marginTop: 8,
-        marginLeft: 5,
-        textAlign: 'justify',
-        width: '90%'
+
     },
     listheading: {
         fontSize: 18,
