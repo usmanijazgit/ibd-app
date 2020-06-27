@@ -6,10 +6,10 @@ import { TextInput } from 'react-native-gesture-handler';
 import * as Animatable from 'react-native-animatable';
 
 
-export default function HomeScreen( {navigation}) {
+export default function HomeScreen({ navigation }) {
 
    const screenchange = () => {
-            navigation.navigate('HomeOption')
+            navigation.navigate('HomeOption');
     }
 
 

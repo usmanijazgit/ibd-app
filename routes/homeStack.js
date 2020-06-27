@@ -29,9 +29,9 @@ const HomeStack = createStackNavigator({
     Home: {
         screen: HomeScreen
     },
-    // HomeOption: {
-    //     screen: HomeScreenOption
-    // },
+    HomeOption: {
+        screen: HomeScreenOption
+    },
     //   PracticeStatement: {
     //       screen: PracticeStatement
     //   },  
