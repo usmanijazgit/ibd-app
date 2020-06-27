@@ -13,27 +13,27 @@ import PICO from '../screens/PICO';
 
 const HomeStack = createStackNavigator({
    
-    // Terms: {
-    //     screen: TermsScreen
-    // },
-    // PatientInfo: {
-    //     screen: PatientInfoScreen
-    // },
-    // Home: {
-    //     screen: HomeScreen
-    // },
-    // HomeOption: {
-    //     screen: HomeScreenOption
-    // },
+    Terms: {
+        screen: TermsScreen
+    },
+    PatientInfo: {
+        screen: PatientInfoScreen
+    },
+    Home: {
+        screen: HomeScreen
+    },
+    HomeOption: {
+        screen: HomeScreenOption
+    },
     PracticeStatement: {
         screen: PracticeStatement
     },  
     SupportingText: {
         screen: SupportingText
     },
-    // PICO: {
-    //     screen: PICO
-    // }    
+    PICO: {
+        screen: PICO
+    }    
 
 }, {
     defaultNavigationOptions: {
