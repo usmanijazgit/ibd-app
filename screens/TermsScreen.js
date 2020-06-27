@@ -1,7 +1,15 @@
-import React from 'react';
+import React , { Component } from 'react';
 import { StyleSheet, View, Text, Button} from 'react-native';
 
-const TermsScreen = props => {
+
+export default class TermsScreen extends Component {
+
+render () {   
+
+    const pressHandler = () => {
+        ()=> this.props.navigation.navigate('Home');
+    }
+
 return (
     <View style={styles.screen}>
         
@@ -15,28 +23,31 @@ return (
             and will abide by your countries healthcare 
             professional code of conduct.</Text>
             <Text style ={styles.termsTextTwo}>I am a healthcare professional and I accept the Terms of Use.</Text> 
-            <View style={styles.button}><Button title = "I ACCEPT" onPress={() => {}}/></View>
+            <View style={styles.button}><Button title = "I ACCEPT" onPress={pressHandler}/></View>
 
         </View>
 
       </View>
 
     </View>
-);
+    );
+  };
 
 };
 
 const styles = StyleSheet.create({
     screen: {
         flex: 1,
-        padding: 10,
-        alignItems: 'center'
+        alignItems: 'center',
+        backgroundColor: 'white'
     },
 
     title: {
-        fontSize: 22,
+        fontSize: 30,
         alignSelf: 'center',
-        marginVertical: 50
+        marginVertical: 80,
+        fontWeight: "bold",
+        color: 'black'
     },
 
     conditionsContainer: {
@@ -49,7 +60,7 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.26,
         elevation: 6, 
         backgroundColor: 'white',
-        padding: 30,
+        padding: 40,
         borderRadius: 10
     },
 
@@ -72,7 +83,7 @@ const styles = StyleSheet.create({
     
 });
 
-export default TermsScreen;
+// export default TermsScreen;
 
 // import React , {Component} from 'react';
 // import { View, Text, ScrollView, Dimensions, TouchableOpacity } from 'react-native';

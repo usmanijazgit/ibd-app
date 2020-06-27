@@ -1,34 +1,67 @@
-import React from 'react';
-import { StyleSheet, View, Text, Button, TouchableOpacity} from 'react-native';
+import React, { Component } from 'react';
+import { StyleSheet, View, Text, TouchableOpacity} from 'react-native';
 
 import Icon from 'react-native-vector-icons/Ionicons'
 import { TextInput } from 'react-native-gesture-handler';
 import * as Animatable from 'react-native-animatable';
 
-const HomeScreen = props => {
+
+export default function HomeScreen( {navigation}) {
+
+   const screenchange = () => {
+            navigation.navigate('HomeOption')
+    }
+
+
     return (
-        <View style={styles.screen}>
-            <Text style ={styles.text}>IBD Tool</Text>
+        <View style={styles.container}>
+            <View style={styles.containerone}>
 
-            <Animatable.View animation="slideInRight" duration={500} style={styles.search}>
-                <Icon name="ios-search" style={{fontSize:16}}/>
-                <TextInput placeholder="Search" style={{fontSize:16, marginLeft: 10}} />
-            </Animatable.View>
-               
-            
-            <View style={{flexDirection: 'row', marginBottom: 15}}>
-                <TouchableOpacity style={styles.buttonOne}>
-                    <Text style={styles.button}>Nutrition Assessment</Text>
-                </TouchableOpacity>
+                <View style={styles.boxone}>
 
-                <TouchableOpacity style={styles.buttonTwo}>
-                    <Text style={styles.button}>Nutrition Screening</Text>
-                </TouchableOpacity>
+                </View>
+
+                <View style={styles.boxtwo}>
+                    <Text style ={styles.title}>IBD Tool</Text>
+                    <Icon name="ios-settings" style={{fontSize:30, marginTop: 30, color: 'white'}}/>
+                </View>
+
+                <Animatable.View animation="slideInRight" duration={500} style={styles.search}>
+                    <Icon name="ios-search" style={{fontSize:16}}/>
+                    <TextInput placeholder="Search" style={{fontSize:16, marginLeft: 10}} />
+                 </Animatable.View>
+
             </View>
-            <TouchableOpacity style={styles.buttonThree}>
-                <Text style={styles.button}>Dietary Management</Text>
-            </TouchableOpacity>
 
+            <View style={styles.containertwo}>
+                <View style={styles.line}></View>
+
+                <TouchableOpacity onPress={screenchange}>
+                    <View style={[styles.cards, styles.cardone]}>
+                        <Text style={styles.name}>
+                            Nutrition Assessment
+                        </Text>
+                    </View>
+                </TouchableOpacity>
+
+                <TouchableOpacity>
+                    <View style={[styles.cards, styles.cardtwo]}>
+                        <Text style={styles.name}>
+                          Nutrition Screening
+                        </Text>
+                    </View>
+                </TouchableOpacity>
+
+                <TouchableOpacity>
+                    <View style={[styles.cards, styles.cardthree]}>
+                        <Text style={styles.name}>
+                            Dietary Management
+                        </Text>
+                    </View>
+                </TouchableOpacity>
+
+            </View>
+           
         </View>
 
         
@@ -37,11 +70,38 @@ const HomeScreen = props => {
 };
 
 
-
 const styles = StyleSheet.create({
-    screen: {
-        backgroundColor: '#FFF7D2',
-        height: '100%',
+    container: {
+        flex: 1,
+        backgroundColor: '#136Df3'
+    },
+    containerone: {
+        flex: 1
+    },
+    containertwo: {
+        flex: 2,
+        backgroundColor: "#fff",
+        borderTopRightRadius: 60,
+        borderTopLeftRadius: 60
+    },
+    boxone: {
+        flex: 0.2
+    },
+    boxtwo: {
+        // flex: 1,
+        marginHorizontal: 35,
+        flexDirection: 'row',
+        justifyContent:'space-between'
+    },
+    title: {
+        fontSize: 35,
+        color: 'white',
+        // fontWeight: 'bold',
+        letterSpacing: 3.5,
+        marginLeft: -25,
+        marginTop: 25,
+        // fontFamily: 'sans-serif-light'
+
     },
     search: {
         height: 50, 
@@ -51,45 +111,47 @@ const styles = StyleSheet.create({
         flexDirection: 'row', 
         padding: 10, 
         alignItems: 'center',
-        borderRadius: 15,
-        borderWidth: 1,
-        marginVertical: 35,
-        marginBottom: 60
+        borderRadius: 6,
+        // borderWidth: 1,
+        marginVertical: 15,
     },
-
-    text: {
-        fontSize: 36,
-        textAlign: 'center' 
+    line: {
+        width: 66,
+        height: 4,
+        backgroundColor: '#f4f0f0',
+        borderRadius: 2,
+        marginVertical: 25,
+        left: '43%'
     },
-    button: {
-        textAlign: 'center',
-        color: 'white',
-        fontSize: 18,
-        overflow: 'hidden',
-        padding: 20,
-        margin: 20
-        
+    cards: {
+        marginTop: 10,
+        marginBottom: 15,
+        marginHorizontal: 30,
+        alignItems: 'center',
+        shadowColor: 'black',
+        shadowOffset: {width: 0, height: 2},
+        shadowRadius: 6,
+        shadowOpacity: 0.26,
+        elevation: 6, 
+        backgroundColor: 'white',
+        padding: 40,
+        borderRadius: 10,
+        height: 100
     },
-    buttonOne: {
-        width: "45%", 
-        backgroundColor: 'green',
-        margin: 10,
-        borderRadius: 16
+    name: {
+        fontSize: 16, 
+        color: '#2D2D2D', 
+        letterSpacing: 1.5,
+        // fontFamily: 'sans-serif-light',
     },
-    buttonTwo: {
-        width: "45%", 
-        backgroundColor: '#2189DC',
-        margin: 10,
-        borderRadius: 16
+    cardone: {
+        backgroundColor: 'lightblue'
     },
-    buttonThree: {
-        width: "95%", 
-        backgroundColor: '#f70909',
-        margin: 10,
-        padding: 14,
-        borderRadius: 16
-    }
-
+    cardtwo: {
+        backgroundColor: 'lightgreen'
+    },
+    cardthree: {
+        backgroundColor: 'lightyellow'
+    },
+  
 });
-
-export default HomeScreen;

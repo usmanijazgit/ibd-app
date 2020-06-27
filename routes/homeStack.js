@@ -1,33 +1,63 @@
+import React from 'react';
+import {Image} from 'react-native';
+
 import {createStackNavigator} from 'react-navigation-stack';
 import {createAppContainer} from 'react-navigation';
 import TermsScreen from '../screens/TermsScreen';
 import PatientInfoScreen from '../screens/PatientInfoScreen';
+import HomeScreen from '../screens/HomeScreen';
 import HomeScreenOption from '../screens/HomeScreenOption';
 import PracticeStatement from '../screens/PracticeStatement';
 import SupportingText from '../screens/SupportingText';
 import PICO from '../screens/PICO';
 
-const screens = {
+const HomeStack = createStackNavigator({
+    // TermsScreen,
+    // PatientInfoScreen,
+    // HomeScreen,
+    // HomeScreenOption,
+    // PracticeStatement,
+    // SupportingText,
+    // PICO,
+
     // Terms: {
     //     screen: TermsScreen
     // },
     // PatientInfo: {
     //     screen: PatientInfoScreen
     // },
-    // Home: {
+    Home: {
+        screen: HomeScreen
+    },
+    // HomeOption: {
     //     screen: HomeScreenOption
     // },
     //   PracticeStatement: {
     //       screen: PracticeStatement
     //   },  
-      SupportingText: {
-        screen: SupportingText
-    },
+    //   SupportingText: {
+    //     screen: SupportingText
+    // },
     // PICO: {
     //     screen: PICO
     // }    
-}
 
-const HomeStack = createStackNavigator(screens);
+}, {
+    defaultNavigationOptions: {
+       headerStyle: {},
+       headerShown: false,
+       headerBackImage: () => <SomeElement />,
+       headerBackTitle: null,
+       headerLeftContainerStyle: {},
+       headerRightContainerStyle: {},
+    }
+
+});
 
 export default createAppContainer(HomeStack);
+
+    
+
+
+// const HomeStack = createStackNavigator(screens);
+

@@ -9,8 +9,6 @@ const HomeScreen = props => {
     const [selectedValueAge, setSelectedValueAge] = useState("Please Select Age");
     const [selectedValueDisease, setSelectedValueDisease] = useState("Please Select Disease");
  
-        
-
     return (
 
         <View>
@@ -52,6 +50,8 @@ const HomeScreen = props => {
                     </Picker>
                 </View>
             </View>    
+
+            <View style={styles.button}><Button title = "Next"/></View>
 
         </View>
     );
