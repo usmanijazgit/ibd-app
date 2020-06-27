@@ -12,16 +12,24 @@ export default function HomeScreen({ navigation }) {
             navigation.navigate('HomeOption');
     }
 
+    const backscreen = () => {
+        navigation.navigate('PatientInfo');
+    }
 
     return (
         <View style={styles.container}>
             <View style={styles.containerone}>
 
-                <View style={styles.boxone}>
-
+                <View style={styles.backbox}>
+                    <TouchableOpacity style= {{flexDirection: 'row'}} onPress={backscreen}>
+                        <Icon name="ios-arrow-back" style={{fontSize:25 , color: 'white'}}/>
+                        <Text style ={styles.back}>Back</Text>
+                    </TouchableOpacity>
                 </View>
+            
 
                 <View style={styles.boxtwo}>
+                    
                     <Text style ={styles.title}>IBD Tool</Text>
                     <Icon name="ios-settings" style={{fontSize:30, marginTop: 30, color: 'white'}}/>
                 </View>
@@ -44,7 +52,7 @@ export default function HomeScreen({ navigation }) {
                     </View>
                 </TouchableOpacity>
 
-                <TouchableOpacity>
+                <TouchableOpacity onPress={screenchange}>
                     <View style={[styles.cards, styles.cardtwo]}>
                         <Text style={styles.name}>
                           Nutrition Screening
@@ -52,7 +60,7 @@ export default function HomeScreen({ navigation }) {
                     </View>
                 </TouchableOpacity>
 
-                <TouchableOpacity>
+                <TouchableOpacity onPress={screenchange}>
                     <View style={[styles.cards, styles.cardthree]}>
                         <Text style={styles.name}>
                             Dietary Management
@@ -84,8 +92,16 @@ const styles = StyleSheet.create({
         borderTopRightRadius: 60,
         borderTopLeftRadius: 60
     },
-    boxone: {
-        flex: 0.2
+    backbox: {
+        paddingLeft: 10,
+        paddingTop: 25,
+        
+    },
+    back: {
+        fontSize: 20,
+        color: 'white',
+        marginLeft: 10,
+        
     },
     boxtwo: {
         // flex: 1,
@@ -124,8 +140,8 @@ const styles = StyleSheet.create({
         left: '43%'
     },
     cards: {
-        marginTop: 10,
-        marginBottom: 15,
+        marginTop: 5,
+        marginBottom: 12,
         marginHorizontal: 30,
         alignItems: 'center',
         shadowColor: 'black',

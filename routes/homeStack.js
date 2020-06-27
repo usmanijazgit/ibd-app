@@ -12,32 +12,25 @@ import SupportingText from '../screens/SupportingText';
 import PICO from '../screens/PICO';
 
 const HomeStack = createStackNavigator({
-    // TermsScreen,
-    // PatientInfoScreen,
-    // HomeScreen,
-    // HomeScreenOption,
-    // PracticeStatement,
-    // SupportingText,
-    // PICO,
-
+   
     // Terms: {
     //     screen: TermsScreen
     // },
     // PatientInfo: {
     //     screen: PatientInfoScreen
     // },
-    Home: {
-        screen: HomeScreen
-    },
-    HomeOption: {
-        screen: HomeScreenOption
-    },
-    //   PracticeStatement: {
-    //       screen: PracticeStatement
-    //   },  
-    //   SupportingText: {
-    //     screen: SupportingText
+    // Home: {
+    //     screen: HomeScreen
     // },
+    // HomeOption: {
+    //     screen: HomeScreenOption
+    // },
+    PracticeStatement: {
+        screen: PracticeStatement
+    },  
+    SupportingText: {
+        screen: SupportingText
+    },
     // PICO: {
     //     screen: PICO
     // }    
@@ -46,7 +39,7 @@ const HomeStack = createStackNavigator({
     defaultNavigationOptions: {
        headerStyle: {},
        headerShown: false,
-       headerBackImage: () => <SomeElement />,
+    //    headerBackImage: () => <SomeElement />,
        headerBackTitle: null,
        headerLeftContainerStyle: {},
        headerRightContainerStyle: {},

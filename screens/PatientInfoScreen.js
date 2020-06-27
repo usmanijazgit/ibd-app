@@ -3,12 +3,16 @@ import { StyleSheet, View, Text, Button, Picker} from 'react-native';
 import { render } from 'react-dom';
 
 
-const HomeScreen = props => {
+export default function HomeScreen({ navigation })  {
 
     const [selectedValueSex, setSelectedValueSex] = useState("Please Select Sex");
     const [selectedValueAge, setSelectedValueAge] = useState("Please Select Age");
     const [selectedValueDisease, setSelectedValueDisease] = useState("Please Select Disease");
  
+    const screenchange = () => {
+        navigation.navigate('Home');
+    }
+
     return (
 
         <View>
@@ -51,7 +55,7 @@ const HomeScreen = props => {
                 </View>
             </View>    
 
-            <View style={styles.button}><Button title = "Next"/></View>
+            <View style={styles.button}><Button title = "Next" onPress={screenchange}/></View>
 
         </View>
     );
@@ -84,5 +88,3 @@ const styles = StyleSheet.create({
     }
 
 });
-
-export default HomeScreen;

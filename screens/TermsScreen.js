@@ -2,12 +2,10 @@ import React , { Component } from 'react';
 import { StyleSheet, View, Text, Button} from 'react-native';
 
 
-export default class TermsScreen extends Component {
+export default function TermsScreen({ navigation })  {
 
-render () {   
-
-    const pressHandler = () => {
-        ()=> this.props.navigation.navigate('Home');
+    const screenchange = () => {
+        navigation.navigate('PatientInfo');
     }
 
 return (
@@ -23,7 +21,7 @@ return (
             and will abide by your countries healthcare 
             professional code of conduct.</Text>
             <Text style ={styles.termsTextTwo}>I am a healthcare professional and I accept the Terms of Use.</Text> 
-            <View style={styles.button}><Button title = "I ACCEPT" onPress={pressHandler}/></View>
+            <View style={styles.button}><Button title = "I ACCEPT" onPress={screenchange}/></View>
 
         </View>
 
@@ -31,7 +29,6 @@ return (
 
     </View>
     );
-  };
 
 };
 
@@ -45,7 +42,7 @@ const styles = StyleSheet.create({
     title: {
         fontSize: 30,
         alignSelf: 'center',
-        marginVertical: 80,
+        marginVertical: 50,
         fontWeight: "bold",
         color: 'black'
     },
@@ -60,7 +57,7 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.26,
         elevation: 6, 
         backgroundColor: 'white',
-        padding: 40,
+        padding: 30,
         borderRadius: 10
     },
 
