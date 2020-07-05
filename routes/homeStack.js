@@ -10,6 +10,8 @@ import HomeScreenOption from '../screens/HomeScreenOption';
 import PracticeStatement from '../screens/PracticeStatement';
 import SupportingText from '../screens/SupportingText';
 import PICO from '../screens/PICO';
+import Login from '../screens/Login';
+import CreateRecord from '../screens/CreateRecord';
 
 const HomeStack = createStackNavigator({
    
@@ -33,6 +35,9 @@ const HomeStack = createStackNavigator({
     },
     PICO: {
         screen: PICO
+    },
+    CreateRecord: {
+        screen: CreateRecord
     }    
 
 }, {

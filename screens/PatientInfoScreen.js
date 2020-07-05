@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { StyleSheet, View, Text, Button, Picker} from 'react-native';
+import { StyleSheet, View, Text, Button, Picker, Keyboard} from 'react-native';
 import { render } from 'react-dom';
 
 
@@ -11,6 +11,10 @@ export default function HomeScreen({ navigation })  {
  
     const screenchange = () => {
         navigation.navigate('Home');
+    }
+
+    const adminloginscreen = () => {
+        navigation.navigate('CreateRecord');
     }
 
     return (
@@ -56,6 +60,8 @@ export default function HomeScreen({ navigation })  {
             </View>    
 
             <View style={styles.button}><Button title = "Next" onPress={screenchange}/></View>
+
+            <View style={styles.button}><Button title = "Create Record" onPress={adminloginscreen}/></View>
 
         </View>
     );

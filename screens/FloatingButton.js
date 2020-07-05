@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet, View, Text, Button, Animated, TouchableWithoutFeedback} from 'react-native';
 
-
+import { StackNavigator } from 'react-navigation';
 export default class FloatingButton extends React.Component {
 
     animation = new Animated.Value(0)
@@ -19,6 +19,7 @@ export default class FloatingButton extends React.Component {
     };
 
     render() {
+
         const resourcesStyle = {
             transform: [
                 {scale: this.animation},
@@ -72,8 +73,15 @@ export default class FloatingButton extends React.Component {
         outputRange: [0, 0, 1]
     })
 
+
+    const { navigate } = this.props;
+
     return (
+        
+
         <View style={[styles.container, ()=> this.props.style]}>
+
+            {/* <FloatingButton navigate={navigate}/> */}
 
             <TouchableWithoutFeedback>
                 <Animated.View style= {[styles.button, styles.secondary, picoStyle, opacity]}>
@@ -102,8 +110,8 @@ export default class FloatingButton extends React.Component {
 
         </View>
     );
-  }
-}
+  };
+};
 
 const styles = StyleSheet.create({
     container: {

@@ -1,11 +1,14 @@
 import React , { Component } from 'react';
 import { StyleSheet, View, Text, Button} from 'react-native';
 
-
 export default function TermsScreen({ navigation })  {
 
     const screenchange = () => {
         navigation.navigate('PatientInfo');
+    }
+
+    const adminloginscreen = () => {
+        navigation.navigate('Login');
     }
 
 return (
@@ -25,6 +28,8 @@ return (
 
         </View>
 
+        {/* <View style={styles.button}><Button title = "Admin Login" onPress={adminloginscreen}/></View> */}
+
       </View>
 
     </View>
@@ -43,8 +48,10 @@ const styles = StyleSheet.create({
         fontSize: 30,
         alignSelf: 'center',
         marginVertical: 50,
-        fontWeight: "bold",
-        color: 'black'
+        // fontWeight: "bold",
+        color: 'black',
+        letterSpacing: 3.5,
+        marginTop: 80
     },
 
     conditionsContainer: {
@@ -57,7 +64,7 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.26,
         elevation: 6, 
         backgroundColor: 'white',
-        padding: 30,
+        padding: 35,
         borderRadius: 10
     },
 

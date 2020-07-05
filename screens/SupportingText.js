@@ -9,6 +9,10 @@ import FloatingButton from '../screens/FloatingButton';
  
 export default function SupportingText({ navigation }) {     
 
+    // const screenchange = () => {
+    //     navigation.navigate('PICO');
+    // }
+
     const backscreen = () => {
         navigation.navigate('PracticeStatement');
     }    

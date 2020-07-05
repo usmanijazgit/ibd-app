@@ -34,11 +34,6 @@ export default function HomeScreen({ navigation }) {
                     <Icon name="ios-settings" style={{fontSize:30, marginTop: 30, color: 'white'}}/>
                 </View>
 
-                <Animatable.View animation="slideInRight" duration={500} style={styles.search}>
-                    <Icon name="ios-search" style={{fontSize:16}}/>
-                    <TextInput placeholder="Search" style={{fontSize:16, marginLeft: 10}} />
-                 </Animatable.View>
-
             </View>
 
             <View style={styles.containertwo}>
@@ -69,8 +64,11 @@ export default function HomeScreen({ navigation }) {
                 </TouchableOpacity>
 
             </View>
+
            
         </View>
+
+        
 
         
     );
@@ -87,7 +85,7 @@ const styles = StyleSheet.create({
         flex: 1
     },
     containertwo: {
-        flex: 2,
+        flex: 3.5,
         backgroundColor: "#fff",
         borderTopRightRadius: 60,
         borderTopLeftRadius: 60
@@ -119,18 +117,6 @@ const styles = StyleSheet.create({
         // fontFamily: 'sans-serif-light'
 
     },
-    search: {
-        height: 50, 
-        width: '95%',
-        marginLeft: '2%',
-        backgroundColor: 'white', 
-        flexDirection: 'row', 
-        padding: 10, 
-        alignItems: 'center',
-        borderRadius: 6,
-        // borderWidth: 1,
-        marginVertical: 15,
-    },
     line: {
         width: 66,
         height: 4,
@@ -152,13 +138,15 @@ const styles = StyleSheet.create({
         backgroundColor: 'white',
         padding: 40,
         borderRadius: 10,
-        height: 100
+        height: 130,
+        justifyContent: 'center'
     },
     name: {
-        fontSize: 16, 
+        fontSize: 20, 
         color: '#2D2D2D', 
         letterSpacing: 1.5,
-        // fontFamily: 'sans-serif-light',
+        fontFamily: 'System',
+
     },
     cardone: {
         backgroundColor: 'lightblue'
