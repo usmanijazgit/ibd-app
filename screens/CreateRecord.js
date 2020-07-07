@@ -1,12 +1,10 @@
 import React , { Component } from 'react';
-import { StyleSheet, View, TextInput, ScrollView, TouchableHighlight} from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons'
+import { StyleSheet, View, TextInput, FlatList, Text, ScrollView, TouchableHighlight} from 'react-native';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 import firebase from 'firebase';
-
 import { YellowBox } from 'react-native';
 import _ from 'lodash';
-import { FlatList } from 'react-native-gesture-handler';
 
 YellowBox.ignoreWarnings(['Setting a timer']);
 const _console = _.clone(console);
@@ -26,7 +24,7 @@ const config ={
           appId: "1:633888609862:web:4a4eff1a47f363aa5edc47",
           measurementId: "G-LF7BLTRE1G",
           presistance: true,
-        };
+    };
 
     if (!firebase.apps.length) {
           firebase.initializeApp(config);
@@ -110,7 +108,7 @@ export default class CreateRecord extends Component{
       render() {
         return (
 
-            <ScrollView>
+            
           <View style={styles.screen}>
 
              
@@ -243,9 +241,7 @@ export default class CreateRecord extends Component{
                         <Icon name="ios-add-circle" style={{fontSize:35}}/>
                 </TouchableHighlight>
 
-               
-
-
+                        
               {/* <FlatList
                 data={this.state.ibd}
                 renderItem={({item, index}) => {
@@ -253,7 +249,7 @@ export default class CreateRecord extends Component{
                         <Text style={{
                             fontSize: 20,
                             margin: 10
-                        }}>{item.ibdHeadingOne}, {item.ibdHeadingTwo}</Text>);
+                        }}>{item.ibdHeadingOne}</Text>);
                 }}
               >
 
@@ -261,7 +257,7 @@ export default class CreateRecord extends Component{
             
           </View>
 
-          </ScrollView>
+         
     
         );
       };
