@@ -8,9 +8,18 @@ import * as Animatable from 'react-native-animatable';
 
 export default function HomeScreen({ navigation }) {
 
-   const screenchange = () => {
-            navigation.navigate('HomeOption');
+   const screenchangeone = () => {
+            navigation.navigate('HomeOption', {headingonebtn: 'Nutrition Assessment'});
     }
+
+    const screenchangetwo = () => {
+        navigation.navigate('HomeOption', {headingonebtn: 'Nutrition Screening'});
+    }
+
+    const screenchangethree = () => {
+        navigation.navigate('HomeOption', {headingonebtn: 'Dietary Management'});
+    }
+
 
     const backscreen = () => {
         navigation.navigate('PatientInfo');
@@ -39,7 +48,7 @@ export default function HomeScreen({ navigation }) {
             <View style={styles.containertwo}>
                 <View style={styles.line}></View>
 
-                <TouchableOpacity onPress={screenchange}>
+                <TouchableOpacity onPress={screenchangeone}>
                     <View style={[styles.cards, styles.cardone]}>
                         <Text style={styles.name}>
                             Nutrition Assessment
@@ -47,7 +56,7 @@ export default function HomeScreen({ navigation }) {
                     </View>
                 </TouchableOpacity>
 
-                <TouchableOpacity onPress={screenchange}>
+                <TouchableOpacity onPress={screenchangetwo}>
                     <View style={[styles.cards, styles.cardtwo]}>
                         <Text style={styles.name}>
                           Nutrition Screening
@@ -55,7 +64,7 @@ export default function HomeScreen({ navigation }) {
                     </View>
                 </TouchableOpacity>
 
-                <TouchableOpacity onPress={screenchange}>
+                <TouchableOpacity onPress={screenchangethree}>
                     <View style={[styles.cards, styles.cardthree]}>
                         <Text style={styles.name}>
                             Dietary Management

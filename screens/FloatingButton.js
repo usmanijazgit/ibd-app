@@ -101,7 +101,6 @@ export default class FloatingButton extends React.Component {
                 </Animated.View>
             </TouchableWithoutFeedback>
            
-
             <TouchableWithoutFeedback onPress={this.toggleMenu}>
                 <Animated.View style= {[styles.button, styles.menu]}>
                 <Text style= {{fontSize: 16, color: 'white', fontWeight: '500'}}>More Information</Text>
@@ -136,6 +135,6 @@ const styles = StyleSheet.create({
         width: 160,
         height: 48,
         borderRadius: 15,
-        backgroundColor: '#FFF'
+        backgroundColor: 'pink'
     }
 });

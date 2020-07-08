@@ -1,5 +1,5 @@
 import React , { Component } from 'react';
-import { StyleSheet, View, TextInput, FlatList, Text, ScrollView, TouchableHighlight} from 'react-native';
+import { StyleSheet, View, TextInput, FlatList, Text, ScrollView, TouchableHighlight, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 import firebase from 'firebase';
@@ -114,6 +114,11 @@ export default class CreateRecord extends Component{
              
 
               <View style={styles.viewStyle}></View>
+
+              <TouchableOpacity style= {{flexDirection: 'row'}} onPress={() => { this.props.navigation.goBack() }} >
+                        <Icon name="ios-arrow-back" style={{fontSize:25 , color: 'white'}}/>
+                        <Text style ={styles.back}>Back</Text>
+                    </TouchableOpacity>
 
                <TextInput style={styles.textInput}
                         keyboardType='default'

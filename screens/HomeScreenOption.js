@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import { StyleSheet, View, Text, ScrollView, TouchableOpacity} from 'react-native';
+import { withNavigation } from 'react-navigation';
 
 import Icon from 'react-native-vector-icons/Ionicons'
 import { TextInput } from 'react-native-gesture-handler';
@@ -7,6 +8,7 @@ import * as Animatable from 'react-native-animatable';
 
 import firebase from 'firebase';
 import { List, ListItem } from 'native-base';
+
 
 
 const config ={
@@ -25,34 +27,31 @@ const config ={
           firebase.initializeApp(config);
       }
 
-export default class CreateRecord extends Component {    
-
+ class HomeScreenOption extends Component {   
+    
     state = {
         myIBDs: []
+        
     }
 
      componentDidMount() {
             
         const ibdRef = firebase.database().ref('ibd');
+        const {headingonebtn} = this.props.navigation.state.params;
         
-        ibdRef.orderByChild('ibdHeadingOne').equalTo('Nutrition assessment').on('value', snapshot => {
+        ibdRef.orderByChild('ibdHeadingOne').equalTo(headingonebtn).once('value', snapshot => {
             this.setState({ myIBDs:  Object.values(snapshot.val()) });
             });
 
-    //    const x = ibdRef.on("value", function(snapshot) {
-    //         snapshot.forEach(function(data) {
-    //             console.log(data.val());
-    //         });
-    //     });
-
-            // orderByChild('ibdHeadingTwo').equalTo('Nutrition assessment').
     }
     
     render() {
+        const {headingonebtn} = this.props.navigation.state.params;
+
         const myitems = this.state.myIBDs.map(ibd => {
             return(
-                <ListItem>
-                    <Text>{ibd.ibdHeadingTwo}</Text>
+                <ListItem rowkey="id" onPress={() => this.props.navigation.navigate('PracticeStatement', {headingtwobtn: ibd.ibdHeadingTwo})}>
+                    <Text style ={styles.listtext}>{ibd.ibdHeadingTwo}</Text>
                 </ListItem>
             )
             
@@ -60,17 +59,11 @@ export default class CreateRecord extends Component {
 
         
     return (
-            // <View style={styles.screen}>
-                    
-            //             <Text style ={styles.listtext}>Treatment of malnutrition</Text>
-            //             <List>{myitems}</List>
-            // </View>
-
-
+            
             <View style={styles.screen}>
             <View style={styles.containerone}>
                 <View style={styles.backbox}>
-                    <TouchableOpacity style= {{flexDirection: 'row'}}>
+                    <TouchableOpacity style= {{flexDirection: 'row'}} onPress={() => { this.props.navigation.navigate('Home') }} >
                         <Icon name="ios-arrow-back" style={{fontSize:25 , color: 'white'}}/>
                         <Text style ={styles.back}>Back</Text>
                     </TouchableOpacity>
@@ -79,7 +72,7 @@ export default class CreateRecord extends Component {
                 </View>
 
                 <View style={styles.headerbox}>
-                    <Text style ={styles.title}>Nutrition Assessment</Text>
+                    <Text style ={styles.title}>{headingonebtn}</Text>
                 </View>
 
                 
@@ -96,17 +89,12 @@ export default class CreateRecord extends Component {
                 <View style={styles.line}></View>
 
                 <ScrollView>
-                    {/* <Text style ={styles.listtext} onPress={screenchange}>Treatment of malnutrition</Text> */}
-                    <List style ={styles.listtext}>{myitems}</List>
+                   <List>{myitems}</List>
                 </ScrollView>
 
             </View>
 
             </View>
-
-
-            
-
     );
   };
 
@@ -150,11 +138,11 @@ const styles = StyleSheet.create({
     },
 
     listtext: {
-        fontSize: 16,
+        fontSize: 15,
         color: 'blue',
-        textDecorationLine: 'underline',
-        padding: 4,
-        marginTop: 15,
+        // textDecorationLine: 'underline',
+        // padding: 4,
+        // marginTop: 10,
         marginLeft: 5,
         
     },
@@ -184,16 +172,13 @@ const styles = StyleSheet.create({
 });
 
 
+export default withNavigation(HomeScreenOption);
+
 {/* {this.state.ibds.length > 0 ? (
 <ItemComponent items={this.state.ibds} />
 ) : (
 <Text>No items</Text>
 )} */}
-
-
-
-
-
 
 
 
@@ -206,13 +191,13 @@ const styles = StyleSheet.create({
 
 // export default function HomeScreenOption({ navigation }) {    
    
-//     const screenchange = () => {
-//         navigation.navigate('PracticeStatement');
-//     }
+    // const screenchange = () => {
+    //     navigation.navigate('PracticeStatement');
+    // }
 
-//     const backscreen = () => {
-//         navigation.navigate('Home');
-//     }
+    // const backscreen = () => {
+    //     navigation.navigate('Home');
+    // }
    
 //     return (
         // <View style={styles.screen}>
