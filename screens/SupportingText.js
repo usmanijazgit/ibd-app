@@ -78,10 +78,10 @@ const config ={
                 </View>
 
                 
-                <Animatable.View animation="slideInRight" duration={500} style={styles.search}>
+                {/* <Animatable.View animation="slideInRight" duration={500} style={styles.search}>
                         <Icon name="ios-search" style={{fontSize:16}}/>
                         <TextInput placeholder="Search" style={{fontSize:16, marginLeft: 10}} />
-                </Animatable.View>
+                </Animatable.View> */}
             </View>
 
             
@@ -122,7 +122,7 @@ const styles = StyleSheet.create({
         flex: 1
     },
     containertwo: {
-        flex: 2.5,
+        flex: 4,
         backgroundColor: "#fff",
         borderTopRightRadius: 60,
         borderTopLeftRadius: 60

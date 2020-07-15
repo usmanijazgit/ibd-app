@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { StyleSheet, View, Text, ScrollView, TouchableOpacity} from 'react-native';
+import { StyleSheet, View, Text, ScrollView, TouchableOpacity, ActivityIndicator} from 'react-native';
 import { withNavigation } from 'react-navigation';
 
 import Icon from 'react-native-vector-icons/Ionicons'
@@ -8,7 +8,6 @@ import * as Animatable from 'react-native-animatable';
 
 import firebase from 'firebase';
 import { List, ListItem } from 'native-base';
-
 
 
 const config ={
@@ -27,11 +26,14 @@ const config ={
           firebase.initializeApp(config);
       }
 
- class HomeScreenOption extends Component {   
-    
-    state = {
-        myIBDs: []
-        
+ class HomeScreenOption extends Component { 
+     
+    constructor() {
+        super()
+        this.state={
+            isLoading: true,
+            myIBDs: []
+        }
     }
 
      componentDidMount() {
@@ -40,10 +42,23 @@ const config ={
         const {headingonebtn} = this.props.navigation.state.params;
         
         ibdRef.orderByChild('ibdHeadingOne').equalTo(headingonebtn).once('value', snapshot => {
-            this.setState({ myIBDs:  Object.values(snapshot.val()) });
+            this.setState({ myIBDs:  Object.values(snapshot.val()), inMemory:  Object.values(snapshot.val()), isLoading: false});
             });
 
     }
+
+     searchIBD = (value) => {
+        const filteredIBD = this.state.inMemory.filter(
+            ibd => {
+                let ibdLowercase = (ibd.ibdHeadingTwo).toLowerCase()
+
+                let searchTermLowercase = value.toLowerCase()
+
+                return ibdLowercase.indexOf(searchTermLowercase) > -1
+            }
+        )
+        this.setState({myIBDs: filteredIBD});
+    }    
     
     render() {
         const {headingonebtn} = this.props.navigation.state.params;
@@ -78,8 +93,14 @@ const config ={
                 
                 <Animatable.View animation="slideInRight" duration={500} style={styles.search}>
                         <Icon name="ios-search" style={{fontSize:16}}/>
-                        <TextInput placeholder="Search" style={{fontSize:16, marginLeft: 10}} />
+                        <TextInput 
+                        placeholder="Search" 
+                        style={{fontSize:16, marginLeft: 10}}
+
+                        onChangeText={(value)=>this.searchIBD(value)}
+                        />
                 </Animatable.View>
+
             </View>
 
             
@@ -88,9 +109,22 @@ const config ={
 
                 <View style={styles.line}></View>
 
-                <ScrollView>
-                   <List>{myitems}</List>
-                </ScrollView>
+         {this.state.isLoading ? (
+            <View
+              style={{
+                ...StyleSheet.absoluteFill,
+                alignItems: 'center',
+                justifyContent: 'center'
+              }}
+            >
+              <ActivityIndicator size="large" color="orange" />
+            </View>
+          ) : null}
+          
+            <ScrollView>
+            
+                <List>{myitems}</List>
+            </ScrollView>
 
             </View>
 
