@@ -41,23 +41,10 @@ const config ={
         const {headingtwobtn} = this.props.navigation.state.params;
         
         ibdRef.orderByChild('ibdHeadingTwo').equalTo(headingtwobtn).once('value', snapshot => {
-            this.setState({ myIBDs:  Object.values(snapshot.val()), inMemory:  Object.values(snapshot.val()) });
+            this.setState({ myIBDs:  Object.values(snapshot.val()) });
             });
 
     }
-
-    searchIBD = (value) => {
-        const filteredIBD = this.state.inMemory.filter(
-            ibd => {
-                let ibdLowercase = (ibd.ibdStatement).toLowerCase()
-
-                let searchTermLowercase = value.toLowerCase()
-
-                return ibdLowercase.indexOf(searchTermLowercase) > -1
-            }
-        )
-        this.setState({myIBDs: filteredIBD});
-    }  
     
     render() {
         const {headingtwobtn} = this.props.navigation.state.params;
@@ -92,12 +79,7 @@ const config ={
                 
                 <Animatable.View animation="slideInRight" duration={500} style={styles.search}>
                         <Icon name="ios-search" style={{fontSize:16}}/>
-                        <TextInput 
-                        placeholder="Search" 
-                        style={{fontSize:16, marginLeft: 10}}
-
-                        onChangeText={(value)=>this.searchIBD(value)}
-                        />
+                        <TextInput placeholder="Search" style={{fontSize:16, marginLeft: 10}} />
                 </Animatable.View>
             </View>
 

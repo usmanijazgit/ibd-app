@@ -34,7 +34,6 @@ const config ={
 const rootRef = firebase.database().ref();
 const ibdRef = rootRef.child('ibd');
 
-
 export default class CreateRecord extends Component{
     constructor (props) {
         super(props);

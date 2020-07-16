@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Text, TouchableOpacity, Button} from 'react-native';
+import { StyleSheet, View, Text, TouchableOpacity} from 'react-native';
 
 import Icon from 'react-native-vector-icons/Ionicons'
 import { TextInput } from 'react-native-gesture-handler';
 import * as Animatable from 'react-native-animatable';
 
-// import analytics from '@react-native-firebase/analytics';
 
 export default function HomeScreen({ navigation }) {
 
@@ -72,15 +71,6 @@ export default function HomeScreen({ navigation }) {
                         </Text>
                     </View>
                 </TouchableOpacity>
-
-                <Button
-                title="Nutrition Screening"
-                onPress={() =>
-                analytics().logEvent('generalevent', {
-                    item: 'It worked',
-                })
-                }
-            />
 
             </View>
 
