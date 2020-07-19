@@ -1,10 +1,11 @@
-import React , { Component } from 'react';
-import { StyleSheet, View, TextInput, FlatList, Text, ScrollView, TouchableHighlight, TouchableOpacity} from 'react-native';
+import React , { Component} from 'react';
+import { StyleSheet, View, Button, Alert, KeyboardAvoidingView, TextInput, FlatList, Text, ScrollView, TouchableHighlight, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 import firebase from 'firebase';
 import { YellowBox } from 'react-native';
 import _ from 'lodash';
+import { SafeAreaView } from 'react-navigation';
 
 YellowBox.ignoreWarnings(['Setting a timer']);
 const _console = _.clone(console);
@@ -34,9 +35,13 @@ const config ={
 const rootRef = firebase.database().ref();
 const ibdRef = rootRef.child('ibd');
 
+
+
 export default class CreateRecord extends Component{
+    
     constructor (props) {
         super(props);
+        
         this.state =({
             ibd: [],
             newIBDHeadingOne: '',
@@ -49,11 +54,16 @@ export default class CreateRecord extends Component{
             newIBDComparator: '',
             newIBDOutcome: '',
             loading: false,
+            // enableShift: false,
+            // setenableShift: true
+            
         });
           
     }
 
+
       componentDidMount() {
+          
         ibdRef.on('value', (childSnapshot) => {
             const ibd = [];
             childSnapshot.forEach((doc) => {
@@ -72,6 +82,7 @@ export default class CreateRecord extends Component{
                 this.setState({
                     ibd: ibd,
                     loading: false,
+                    
                 });
             });
         });
@@ -89,6 +100,37 @@ export default class CreateRecord extends Component{
             return;
         }
 
+        if (this.state.newIBDStatement.trim() === '') {
+            alert('Statement Field is Blank');
+            return;
+        }
+
+        if (this.state.newIBDSupportingText.trim() === '') {
+            alert('Supporting Text Field is Blank');
+            return;
+        }
+
+        if (this.state.newIBDPopulation.trim() === '') {
+            alert('Population Field is Blank');
+            return;
+        }
+
+        if (this.state.newIBDIntervention.trim() === '') {
+            alert('Intervention Field is Blank');
+            return;
+        }
+
+        if (this.state.newIBDComparator.trim() === '') {
+            alert('Comparator Field is Blank');
+            return;
+        }
+
+        if (this.state.newIBDOutcome.trim() === '') {
+            alert('Outcome Field is Blank');
+            return;
+        }
+        
+
         ibdRef.push({
             ibdHeadingOne: this.state.newIBDHeadingOne,
             ibdHeadingTwo: this.state.newIBDHeadingTwo,
@@ -102,23 +144,31 @@ export default class CreateRecord extends Component{
 
         });
     }
-
-      
       
       render() {
+        
+      
         return (
-
+           
+          <KeyboardAvoidingView
+                behavior={Platform.OS === "ios" ? "padding" : null}
+                style={styles.screen}
+          >
             
-          <View style={styles.screen}>
+          <View style={styles.inner}>
+            
+              <View style={styles.viewStyle}>
 
-             
-
-              <View style={styles.viewStyle}></View>
-
-              <TouchableOpacity style= {{flexDirection: 'row'}} onPress={() => { this.props.navigation.goBack() }} >
-                        <Icon name="ios-arrow-back" style={{fontSize:25 , color: 'white'}}/>
-                        <Text style ={styles.back}>Back</Text>
-                    </TouchableOpacity>
+                    <Button title="Log out" onPress={() => firebase.auth().signOut()}> 
+                         Log Out 
+                    </Button>
+              </View>
+                
+                    {/* <TouchableOpacity style= {{flexDirection: 'row'}} onPress={() => { this.props.navigation.goBack() }} >
+                                <Icon name="ios-arrow-back" style={{fontSize:25 , color: 'white'}}/>
+                                <Text style ={styles.back}>Back</Text>
+                    </TouchableOpacity> */}
+               
 
                <TextInput style={styles.textInput}
                         keyboardType='default'
@@ -191,6 +241,7 @@ export default class CreateRecord extends Component{
                         keyboardType='default'
                         placeholderTextColor='black'
                         placeholder='Enter Population'
+                        // onFocus={()=> this.state.setenableShift}
                         autoCapitalize='none'
                         onChangeText={
                             (text) => {
@@ -204,6 +255,7 @@ export default class CreateRecord extends Component{
                         keyboardType='default'
                         placeholderTextColor='black'
                         placeholder='Enter Intervention'
+                        // onFocus={()=> this.state.setenableShift}
                         autoCapitalize='none'
                         onChangeText={
                             (text) => {
@@ -244,9 +296,10 @@ export default class CreateRecord extends Component{
                     onPress={this.onPressAdd}
                 >
                         <Icon name="ios-add-circle" style={{fontSize:35}}/>
+                        
                 </TouchableHighlight>
 
-                        
+                
               {/* <FlatList
                 data={this.state.ibd}
                 renderItem={({item, index}) => {
@@ -261,8 +314,10 @@ export default class CreateRecord extends Component{
               </FlatList> */}
             
           </View>
-
-         
+          
+          </KeyboardAvoidingView>     
+ 
+          
     
         );
       };
@@ -274,11 +329,11 @@ const styles = StyleSheet.create({
     },
 
     viewStyle: {
-        backgroundColor: 'green',
+        backgroundColor: 'pink',
         flexDirection: 'row',
         justifyContent: 'flex-end',
         alignItems: 'center',
-        height: 64
+        height: 50
     },
 
     textInput: {
@@ -289,6 +344,9 @@ const styles = StyleSheet.create({
         borderColor: 'black',
         borderWidth: 1,
         color: 'black'
+    },
+    inner: {
+        justifyContent: "flex-end",
     }
 });
     

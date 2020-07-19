@@ -12,6 +12,7 @@ import SupportingText from '../screens/SupportingText';
 import PICO from '../screens/PICO';
 import Login from '../screens/Login';
 import CreateRecord from '../screens/CreateRecord';
+import AdminLogin from '../screens/AdminLogin';
 
 const HomeStack = createStackNavigator({
    
@@ -21,6 +22,9 @@ const HomeStack = createStackNavigator({
     PatientInfo: {
         screen: PatientInfoScreen
     },
+    AdminLogin: {
+        screen: AdminLogin
+    }, 
     Home: {
         screen: HomeScreen
     },
@@ -35,16 +39,12 @@ const HomeStack = createStackNavigator({
     },
     PICO: {
         screen: PICO
-    },
-    CreateRecord: {
-        screen: CreateRecord
-    }    
+    },  
 
 }, {
     defaultNavigationOptions: {
        headerStyle: {},
        headerShown: false,
-    //    headerBackImage: () => <SomeElement />,
        headerBackTitle: null,
        headerLeftContainerStyle: {},
        headerRightContainerStyle: {},

@@ -1,7 +1,10 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, Button } from 'react-native';
+import Spinner from './screens/actions/Spinner'
 
 import Navigator from './routes/homeStack';
+import AdminNavigator from './routes/adminStack';
+
 import firebase from 'firebase';
 import { render } from 'react-dom';
 
@@ -18,23 +21,7 @@ console.warn = message => {
 
 class App extends React.Component {
 
-//   UNSAFE_componentWillMount() {
-//     var firebaseConfig = {
-//       apiKey: "AIzaSyBHKV7x97xwDrUVnc7Z6wPCiXV8Yc-_nO8",
-//       authDomain: "ibdtool-2a1c7.firebaseapp.com",
-//       databaseURL: "https://ibdtool-2a1c7.firebaseio.com",
-//       projectId: "ibdtool-2a1c7",
-//       storageBucket: "ibdtool-2a1c7.appspot.com",
-//       messagingSenderId: "633888609862",
-//       appId: "1:633888609862:web:4a4eff1a47f363aa5edc47",
-//       measurementId: "G-LF7BLTRE1G"
-//     };
-//     // Initialize Firebase
-//     if (!firebase.apps.length) {
-//     firebase.initializeApp(firebaseConfig);
-//     }
-
-// }
+state = {loggedIn: null}; 
 
 constructor () {
   super();
@@ -50,15 +37,36 @@ constructor () {
   };
   if (!firebase.apps.length) {
     firebase.initializeApp(config);
-}
+  }
+
+  firebase.auth().onAuthStateChanged((user) => {
+    if (user) {
+      this.setState({loggedIn: true});
+    } else {
+      this.setState({loggedIn: false});
+    }
+  });
+
 }
 
+
+  renderContent() {
+
+    switch (this.state.loggedIn){
+      case true:
+        return <AdminNavigator />
+      case false: 
+        return <Navigator />;
+      default:
+        return <Spinner size="large" />
+    }
+
+  }
 
   render() {
     return (
       <View style={styles.screen}>
-
-        <Navigator />
+        {this.renderContent()}
       </View>
 
     );

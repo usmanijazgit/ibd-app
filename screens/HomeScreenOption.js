@@ -9,6 +9,8 @@ import * as Animatable from 'react-native-animatable';
 import firebase from 'firebase';
 import { List, ListItem } from 'native-base';
 
+// import analytics from '@react-native-firebase/analytics';
+
 
 const config ={
     apiKey: "AIzaSyBHKV7x97xwDrUVnc7Z6wPCiXV8Yc-_nO8",

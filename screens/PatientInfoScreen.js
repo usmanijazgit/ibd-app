@@ -14,7 +14,7 @@ export default function HomeScreen({ navigation })  {
     }
 
     const adminloginscreen = () => {
-        navigation.navigate('CreateRecord');
+        navigation.navigate('AdminLogin');
     }
 
     return (
@@ -61,7 +61,8 @@ export default function HomeScreen({ navigation })  {
 
             <View style={styles.button}><Button title = "Next" onPress={screenchange}/></View>
 
-            <View style={styles.button}><Button title = "Create Record" onPress={adminloginscreen}/></View>
+            {/* <View style={styles.button}><Button title = "Create Record" onPress={adminloginscreen}/></View> */}
+            <View style={styles.button}><Button title = "Admin Login" onPress={adminloginscreen}/></View>
 
         </View>
     );
