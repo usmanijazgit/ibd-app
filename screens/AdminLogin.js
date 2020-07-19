@@ -5,6 +5,8 @@ import { withNavigation } from 'react-navigation';
 
 import {Form, Item, Input, Text, Button} from 'native-base';
 
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+
 import Spinner from './actions/Spinner';
 
 import firebase from 'firebase';
@@ -50,6 +52,7 @@ class AdminLogin extends Component {
 
     render() { 
     return (
+      
         <View style={styles.container}>
 
             <View style={styles.backbox}>
@@ -145,7 +148,6 @@ const styles = StyleSheet.create({
         fontSize: 20,
         color: 'white',
         marginLeft: 10,
-        backgroundColor: '#5257F2',
     },
     backbox: {
         paddingTop: 25,

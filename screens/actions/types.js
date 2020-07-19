@@ -1,0 +1,1 @@
+export const RECORD_UPDATE = 'record_update';

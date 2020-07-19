@@ -13,9 +13,14 @@ import PICO from '../screens/PICO';
 import Login from '../screens/Login';
 import CreateRecord from '../screens/CreateRecord';
 import AdminLogin from '../screens/AdminLogin';
+// import ProjectsScreen from '../screens/ProjectsScreen';
 
 const HomeStack = createStackNavigator({
-   
+    
+    // ProjectsScreen: {
+    //     screen: ProjectsScreen
+    // }
+
     Terms: {
         screen: TermsScreen
     },

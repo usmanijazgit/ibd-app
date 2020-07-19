@@ -1,11 +1,13 @@
 import React , { Component} from 'react';
-import { StyleSheet, View, Button, Alert, KeyboardAvoidingView, TextInput, FlatList, Text, ScrollView, TouchableHighlight, TouchableOpacity} from 'react-native';
+import { StyleSheet, View, Button, Alert, TextInput, FlatList, Text, ScrollView, TouchableHighlight, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
+// import {connect} from 'react-redux';
+// import {recordUpdate} from './actions';
 
 import firebase from 'firebase';
 import { YellowBox } from 'react-native';
 import _ from 'lodash';
-import { SafeAreaView } from 'react-navigation';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
 YellowBox.ignoreWarnings(['Setting a timer']);
 const _console = _.clone(console);
@@ -37,7 +39,7 @@ const ibdRef = rootRef.child('ibd');
 
 
 
-export default class CreateRecord extends Component{
+ class CreateRecord extends Component{
     
     constructor (props) {
         super(props);
@@ -53,9 +55,7 @@ export default class CreateRecord extends Component{
             newIBDIntervention: '',
             newIBDComparator: '',
             newIBDOutcome: '',
-            loading: false,
-            // enableShift: false,
-            // setenableShift: true
+            loading: false
             
         });
           
@@ -150,11 +150,11 @@ export default class CreateRecord extends Component{
       
         return (
            
-          <KeyboardAvoidingView
-                behavior={Platform.OS === "ios" ? "padding" : null}
-                style={styles.screen}
-          >
-            
+        //   <KeyboardAwareScrollview
+        //         // behavior={Platform.OS === "ios" ? "padding" : null}
+        //         style={styles.screen}
+        //   >
+        <KeyboardAwareScrollView>
           <View style={styles.inner}>
             
               <View style={styles.viewStyle}>
@@ -315,7 +315,7 @@ export default class CreateRecord extends Component{
             
           </View>
           
-          </KeyboardAvoidingView>     
+        </KeyboardAwareScrollView>  
  
           
     
@@ -349,4 +349,21 @@ const styles = StyleSheet.create({
         justifyContent: "flex-end",
     }
 });
-    
+
+// const mapStateToProps = (state) => {
+//     const {
+//         newIBDHeadingOne,
+//         newIBDHeadingTwo,
+//         newIBDSubHeading,
+//         newIBDStatement,
+//         newIBDSupportingText,
+//         newIBDPopulation,
+//         newIBDIntervention,
+//         newIBDComparator,
+//         newIBDOutcome
+//     }
+// }
+
+export default CreateRecord;
+
+// export default connect(null, {recordUpdate}) (CreateRecord);

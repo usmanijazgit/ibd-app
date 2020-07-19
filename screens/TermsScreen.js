@@ -7,9 +7,6 @@ export default function TermsScreen({ navigation })  {
         navigation.navigate('PatientInfo');
     }
 
-    const adminloginscreen = () => {
-        navigation.navigate('Login');
-    }
 
 return (
     <View style={styles.screen}>
