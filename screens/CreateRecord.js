@@ -4,6 +4,8 @@ import Icon from 'react-native-vector-icons/Ionicons';
 // import {connect} from 'react-redux';
 // import {recordUpdate} from './actions';
 
+import RNPickerSelect from 'react-native-picker-select';
+
 import firebase from 'firebase';
 import { YellowBox } from 'react-native';
 import _ from 'lodash';
@@ -59,6 +61,20 @@ const ibdRef = rootRef.child('ibd');
             
         });
           
+    }
+
+    onClear() {
+        this.setState({
+            newIBDHeadingOne: '',
+            newIBDHeadingTwo: '',
+            newIBDSubHeading: '',
+            newIBDStatement: '',
+            newIBDSupportingText: '',
+            newIBDPopulation: '',
+            newIBDIntervention: '',
+            newIBDComparator: '',
+            newIBDOutcome: '',
+        });
     }
 
 
@@ -157,37 +173,50 @@ const ibdRef = rootRef.child('ibd');
         <KeyboardAwareScrollView>
           <View style={styles.inner}>
             
-              <View style={styles.viewStyle}>
+                <View style={styles.viewStyle}>
 
-                    <Button title="Log out" onPress={() => firebase.auth().signOut()}> 
-                         Log Out 
-                    </Button>
-              </View>
-                
-                    {/* <TouchableOpacity style= {{flexDirection: 'row'}} onPress={() => { this.props.navigation.goBack() }} >
-                                <Icon name="ios-arrow-back" style={{fontSize:25 , color: 'white'}}/>
-                                <Text style ={styles.back}>Back</Text>
-                    </TouchableOpacity> */}
+                    <View style={styles.backbox}>
+                        <TouchableOpacity style= {{flexDirection: 'row'}} onPress={() => { this.props.navigation.navigate('AdminHome') }} >
+                            <Icon name="ios-arrow-back" style={{fontSize:25 , color: 'black'}}/>
+                            <Text style ={styles.back}>Back</Text>
+                        </TouchableOpacity>
+                    </View>
+
+                    <Icon name="md-log-out" onPress={() => firebase.auth().signOut() } style={{fontSize:30, marginTop: 15, color: 'black', textAlign: "right", marginRight: 20 }}/>
+             
+                </View>
+
+                <Text style={styles.textContainer}>Create A New Record</Text>
+
+               <View style={styles.dataInputScreen}> 
+
+               <Text style={styles.textInputHeading}>Heading One:</Text>
+
                
+                <RNPickerSelect placeholder={{
+                    label: 'Enter Heading One',
+                    value: null,
+                }} placeholderTextColor= 'black' style={{...pickerSelectStyles}}
+                    items={[
+                        { label: 'Nutrition Assessment', value: 'Nutrition Assessment' },
+                        { label: 'Nutrition Screening', value: 'Nutrition Screening' },
+                        { label: 'Dietary Management', value: 'Dietary Management' }
+                        
+                    ]}
 
-               <TextInput style={styles.textInput}
-                        keyboardType='default'
-                        placeholderTextColor='black'
-                        placeholder='Enter heading One'
-                        autoCapitalize='none'
-                        onChangeText={
-                            (text) => {
-                                this.setState({ newIBDHeadingOne: text });
-                            }
+                    onValueChange={
+                        (value) => {
+                            this.setState({ newIBDHeadingOne: value });
                         }
-                        value={this.state.newIBDHeadingOne}
-                    />
+                    }
+                    value={this.state.newIBDHeadingOne}
+                />
 
-
+                <Text style={styles.textInputHeading}>Heading Two:</Text>
                 <TextInput style={styles.textInput}
                         keyboardType='default'
-                        placeholderTextColor='black'
-                        placeholder='Enter heading Two'
+                        placeholderTextColor='lightgrey'
+                        placeholder='Enter Heading Two'
                         autoCapitalize='none'
                         onChangeText={
                             (text) => {
@@ -197,10 +226,12 @@ const ibdRef = rootRef.child('ibd');
                         value={this.state.newIBDHeadingTwo}
                     />
 
+                    <Text style={styles.textInputHeading}>Sub-Heading (Optional):</Text>
+
                     <TextInput style={styles.textInput}
                         keyboardType='default'
-                        placeholderTextColor='black'
-                        placeholder='Enter Subheading'
+                        placeholderTextColor='lightgrey'
+                        placeholder='Enter Sub-Heading'
                         autoCapitalize='none'
                         onChangeText={
                             (text) => {
@@ -210,10 +241,12 @@ const ibdRef = rootRef.child('ibd');
                         value={this.state.newIBDSubHeading}
                     />
 
+                    <Text style={styles.textInputHeading}>Practice Statement:</Text>
+
                     <TextInput style={styles.textInput}
                         keyboardType='default'
-                        placeholderTextColor='black'
-                        placeholder='Enter Statement'
+                        placeholderTextColor='lightgrey'
+                        placeholder='Enter Practice Statement'
                         autoCapitalize='none'
                         onChangeText={
                             (text) => {
@@ -223,9 +256,11 @@ const ibdRef = rootRef.child('ibd');
                         value={this.state.newIBDStatement}
                     />
 
+                    <Text style={styles.textInputHeading}>Supporting Text:</Text>
+
                     <TextInput style={styles.textInput}
                         keyboardType='default'
-                        placeholderTextColor='black'
+                        placeholderTextColor='lightgrey'
                         placeholder='Enter Supporting Text'
                         autoCapitalize='none'
                         onChangeText={
@@ -236,10 +271,11 @@ const ibdRef = rootRef.child('ibd');
                         value={this.state.newIBDSupportingText}
                     />
 
+                    <Text style={styles.textInputHeading}>Population:</Text>
 
                     <TextInput style={styles.textInput}
                         keyboardType='default'
-                        placeholderTextColor='black'
+                        placeholderTextColor='lightgrey'
                         placeholder='Enter Population'
                         // onFocus={()=> this.state.setenableShift}
                         autoCapitalize='none'
@@ -251,9 +287,11 @@ const ibdRef = rootRef.child('ibd');
                         value={this.state.newIBDPopulation}
                     />
 
+                    <Text style={styles.textInputHeading}>Intervention:</Text>
+
                     <TextInput style={styles.textInput}
                         keyboardType='default'
-                        placeholderTextColor='black'
+                        placeholderTextColor='lightgrey'
                         placeholder='Enter Intervention'
                         // onFocus={()=> this.state.setenableShift}
                         autoCapitalize='none'
@@ -265,9 +303,11 @@ const ibdRef = rootRef.child('ibd');
                         value={this.state.newIBDIntervention}
                     />
 
+                    <Text style={styles.textInputHeading}>Comparator:</Text>
+
                     <TextInput style={styles.textInput}
                         keyboardType='default'
-                        placeholderTextColor='black'
+                        placeholderTextColor='lightgrey'
                         placeholder='Enter Comparator'
                         autoCapitalize='none'
                         onChangeText={
@@ -278,9 +318,11 @@ const ibdRef = rootRef.child('ibd');
                         value={this.state.newIBDComparator}
                     />
 
+                    <Text style={styles.textInputHeading}>Outcome:</Text>
+
                     <TextInput style={styles.textInput}
                         keyboardType='default'
-                        placeholderTextColor='black'
+                        placeholderTextColor='lightgrey'
                         placeholder='Enter Outcome'
                         autoCapitalize='none'
                         onChangeText={
@@ -291,14 +333,8 @@ const ibdRef = rootRef.child('ibd');
                         value={this.state.newIBDOutcome}
                     />
 
-                <TouchableHighlight
-                    style={{ marginLeft: 100}}
-                    onPress={this.onPressAdd}
-                >
-                        <Icon name="ios-add-circle" style={{fontSize:35}}/>
-                        
-                </TouchableHighlight>
-
+                
+                </View>        
                 
               {/* <FlatList
                 data={this.state.ibd}
@@ -314,8 +350,36 @@ const ibdRef = rootRef.child('ibd');
               </FlatList> */}
             
           </View>
+
+        <View style={{flexDirection:'row', justifyContent:'space-between', backgroundColor: '#EA8332'}}> 
+
+            <TouchableHighlight
+                style={[styles.button, styles.clearbutton]}
+                onPress={this.onClear.bind(this)}
+                >
+                    <Text style={[styles.btnname, styles.clearbtnname]}>
+                            Clear
+                    </Text>
+                    
+            </TouchableHighlight>
+
+            <TouchableHighlight
+                style={[styles.button, styles.addbutton]}
+                onPress={this.onPressAdd}
+                >
+                    {/* <Icon name="ios-add-circle" style={{fontSize:35}}/> */}
+                    <Text style={[styles.btnname, styles.addbtnname]}>
+                            Add Record
+                    </Text>
+            </TouchableHighlight>
+
+            
+
+        </View> 
           
         </KeyboardAwareScrollView>  
+
+        
  
           
     
@@ -324,31 +388,132 @@ const ibdRef = rootRef.child('ibd');
     };
     
 const styles = StyleSheet.create({
-    screen: {
-    flex: 1
-    },
 
     viewStyle: {
-        backgroundColor: 'pink',
+        // backgroundColor: 'white',
         flexDirection: 'row',
-        justifyContent: 'flex-end',
+        justifyContent: 'space-between',
         alignItems: 'center',
-        height: 50
+        height: 80,
     },
 
-    textInput: {
-        height: 40,
-        width: 200,
-        margin: 10,
-        padding: 10,
-        borderColor: 'black',
-        borderWidth: 1,
-        color: 'black'
+    textContainer: {
+        // backgroundColor: 'white',
+        fontSize: 32,
+        marginBottom: 15,
+        // width: '100%',
+        alignSelf: 'center',
+        letterSpacing: 3.5,
     },
-    inner: {
-        justifyContent: "flex-end",
-    }
+    textInputHeading: {
+        fontSize: 18,
+        marginLeft: 25,
+        marginTop: 8,
+        fontWeight: 'bold',
+        letterSpacing: 2.5,
+        color: 'white'
+    },
+    textInput: {
+        height: 45,
+        width: '90%',
+        margin: 10,
+        marginLeft: 20,
+        padding: 10,
+        borderBottomColor: '#2D3057',
+        borderBottomWidth: 1,
+        color: 'white',
+        borderRadius: 2,
+        backgroundColor: '#EA8332',
+        fontSize: 16
+    },
+    dataInputScreen: {
+        backgroundColor: '#EA8332',
+        paddingTop: 30,
+        borderTopRightRadius: 80,
+        paddingBottom: 40
+        
+    },
+    back: {
+        fontSize: 20,
+        color: 'black',
+        marginLeft: 10,
+    },
+    backbox: {
+        paddingTop: 15,
+        paddingLeft: 10,
+        width: 80
+    },
+    button: {
+        margin: 20,
+        padding: 12,
+        width: 150,
+        justifyContent: 'center',
+  
+    },
+    btnname: {
+        fontSize: 24, 
+        letterSpacing: 1.5,
+        textAlign: 'center',
+
+    },
+
+   clearbtnname: {
+       color: '#C2004B',
+       backgroundColor: 'white',
+   },
+
+   addbtnname: {
+    color: 'white',
+    backgroundColor: '#C2004B',
+   },
+
+   clearbutton: {
+    backgroundColor: 'white',
+    borderWidth: 1,
+    borderRadius: 6,
+    borderColor: '#C2004B'
+   },
+
+   addbutton: {
+    backgroundColor: '#C2004B',
+    borderWidth: 1,
+    borderRadius: 6,
+    borderColor: '#C2004B'
+   }
+
 });
+
+const pickerSelectStyles = StyleSheet.create({
+
+    inputIOS: {
+        height: 45,
+        width: '90%',
+        margin: 10,
+        marginLeft: 20,
+        padding: 10,
+        borderBottomColor: '#2D3057',
+        borderBottomWidth: 1,
+        color: 'white',
+        borderRadius: 2,
+        backgroundColor: '#EA8332',
+        fontSize: 16
+    },
+
+    inputAndroid: {
+        height: 45,
+        width: '90%',
+        margin: 10,
+        marginLeft: 20,
+        padding: 10,
+        borderBottomColor: '#2D3057',
+        borderBottomWidth: 1,
+        color: 'white',
+        borderRadius: 2,
+        backgroundColor: '#EA8332',
+        fontSize: 16
+    }
+
+    });
 
 // const mapStateToProps = (state) => {
 //     const {

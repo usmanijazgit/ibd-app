@@ -11,16 +11,16 @@ import Spinner from './actions/Spinner';
 
 import firebase from 'firebase';
 
-class AdminLogin extends Component {
+class CreateAdmin extends Component {
 
-    state = {email: '', password: '', error: '', loading: false};
+    state = {email: '', password: '', error: '', success: '', loading: false};
 
      onButtonPress = () => {
         const {email, password} = this.state; 
 
         this.setState({error: '', loading: true});
 
-        firebase.auth().signInWithEmailAndPassword(email, password)
+        firebase.auth().createUserWithEmailAndPassword(email, password)
         .then(this.onLoginSuccess.bind(this))    
         .catch(this.onLoginFail.bind(this));
     }
@@ -30,12 +30,13 @@ class AdminLogin extends Component {
             email: '',
             password: '',
             loading: false,
-            error: ''
+            error: '',
+            success: 'Account Created'
         });
     }
 
     onLoginFail() {
-        this.setState({error: 'Authentication Failed', loading: false});
+        this.setState({error: 'Something went wrong', loading: false});
     }
 
     renderButton() {
@@ -45,7 +46,7 @@ class AdminLogin extends Component {
 
         return (
           <TouchableOpacity style={styles.mainBtn} onPress={this.onButtonPress.bind(this)}>
-            <Text style={styles.btnText}>Login</Text>
+            <Text style={styles.btnText}>Create Admin</Text>
           </TouchableOpacity>
         );
     }
@@ -56,17 +57,17 @@ class AdminLogin extends Component {
         <View style={styles.container}>
 
             <View style={styles.backbox}>
-                <TouchableOpacity style= {{flexDirection: 'row'}} onPress={() => { this.props.navigation.navigate('PatientInfo') }} >
-                    <Icon name="ios-arrow-back" style={{fontSize:25 , color: 'white'}}/>
+                <TouchableOpacity style= {{flexDirection: 'row'}} onPress={() => { this.props.navigation.navigate('AdminHome') }} >
+                    <Icon name="ios-arrow-back" style={{fontSize:25 , color: 'black'}}/>
                     <Text style ={styles.back}>Back</Text>
                 </TouchableOpacity>
             </View>
 
     
-          <Text style={styles.textContainer}>Admin Login</Text>
+          <Text style={styles.textContainer}>Create A New Admin</Text>
 
           <View style={styles.formArea}>
-            <Text style={[styles.textContainer, styles.signin]}>Sign in</Text>
+          
             <View style={styles.mainForm}>
               <Item style={styles.formItems}>
                 <Input placeholder="Email" value={this.state.email} onChangeText={email => this.setState({ email})} style={styles.Input} />
@@ -77,6 +78,10 @@ class AdminLogin extends Component {
 
                 <Text style={styles.errorText}>
                     {this.state.error}
+                </Text>
+
+                <Text style={styles.successText}>
+                    {this.state.success}
                 </Text>
 
               <View style={styles.Button}>
@@ -96,30 +101,27 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         position: 'relative',
-        backgroundColor: '#EA8332',
+        backgroundColor: 'white',
       },
    
       textContainer: {
-        color: '#FCFDFF',
-        fontSize: 36,
-        // marginBottom: 30,
+        // color: '#FCFDFF',
+        fontSize: 32,
+        // marginBottom: 50,
         position: 'relative',
-        top: '10%',
+        top: '4%',
         alignSelf: 'center',
+        letterSpacing: 3.5,
       },
       formArea: {
         alignSelf: 'center',
         width: '95%',
         backgroundColor: '#ffffff',
         borderRadius: 20,
-        top: '15%',
+        top: '10%',
         paddingBottom: 40,
       },
-      signin: {
-        top: 0,
-        color: '#2D3057',
-        marginTop: 15,
-      },
+
       formItems: {
         marginTop: 15,
         borderBottomColor: '#2D3057',
@@ -134,32 +136,39 @@ const styles = StyleSheet.create({
         padding: 35,
       },
       mainBtn: {
-        backgroundColor: '#1DDCAF',
-        height: 50,
+        backgroundColor: '#1D1B1A',
+        height: 80,
         borderRadius: 10
       },
       btnText: {
-        color: '#2D3057',
-        fontSize: 16,
-        textAlign: 'center',
-        top: '30%'
-      },
-      back: {
-        fontSize: 20,
         color: 'white',
+        fontSize: 18,
+        textAlign: 'center',
+        top: '35%'
+      },
+    back: {
+        fontSize: 20,
+        color: 'black',
         marginLeft: 10,
     },
     backbox: {
         paddingTop: 25,
         paddingLeft: 10,
+        width: 80
     },
     errorText: {
         fontSize: 20,
         alignSelf: 'center',
         color: 'red',
         top: '5%'
+    },
+    successText: {
+        fontSize: 20,
+        alignSelf: 'center',
+        color: 'green',
+        top: '5%'
     }
   
 });
 
-export default withNavigation(AdminLogin);
+export default withNavigation(CreateAdmin);

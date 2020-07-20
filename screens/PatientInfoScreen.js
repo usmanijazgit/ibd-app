@@ -92,6 +92,13 @@ class PatientInfoScreen extends Component{
             PatientDisease: this.state.newPatientDisease,
         });
 
+        this.setState({
+            newPatientAge: '',
+            newPatientSex: '',
+            newPatientDisease: '',
+            
+        });
+
         this.props.navigation.navigate('Home')
     }
 

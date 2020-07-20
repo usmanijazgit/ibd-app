@@ -2,11 +2,21 @@ import React from 'react';
 
 import {createStackNavigator} from 'react-navigation-stack';
 import {createAppContainer} from 'react-navigation';
+
+import AdminHome from '../screens/AdminHome';
+import CreateAdmin from '../screens/CreateAdmin';
 import CreateRecord from '../screens/CreateRecord';
-import AdminLogin from '../screens/AdminLogin';
+
+
 
 const AdminStack = createStackNavigator({
    
+    AdminHome: {
+        screen: AdminHome
+    },
+    CreateAdmin: {
+        screen: CreateAdmin
+    },
     CreateRecord: {
         screen: CreateRecord
     }   
