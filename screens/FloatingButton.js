@@ -2,7 +2,14 @@ import React from "react";
 import { StyleSheet, View, Text, Button, Animated, TouchableWithoutFeedback} from 'react-native';
 
 import { StackNavigator } from 'react-navigation';
-export default class FloatingButton extends React.Component {
+import { withNavigation } from 'react-navigation';
+
+import firebase from 'firebase';
+import { List, ListItem } from 'native-base';
+
+
+class FloatingButton extends React.Component {
+
 
     animation = new Animated.Value(0)
 
@@ -73,9 +80,6 @@ export default class FloatingButton extends React.Component {
         outputRange: [0, 0, 1]
     })
 
-
-    const { navigate } = this.props;
-
     return (
         
 
@@ -83,15 +87,15 @@ export default class FloatingButton extends React.Component {
 
             {/* <FloatingButton navigate={navigate}/> */}
 
-            <TouchableWithoutFeedback>
+            {/* <TouchableWithoutFeedback>
                 <Animated.View style= {[styles.button, styles.secondary, picoStyle, opacity]}>
-                    <Text>PICO</Text>
+                    <Text>Supporting text</Text>
                 </Animated.View>
-            </TouchableWithoutFeedback>
+            </TouchableWithoutFeedback> */}
 
             <TouchableWithoutFeedback>
                 <Animated.View style= {[styles.button, styles.secondary, supportingStyle, opacity]}>
-                    <Text>Supporting text</Text>
+                    <Text>Practical Tips</Text>
                 </Animated.View>
             </TouchableWithoutFeedback>
 
@@ -135,6 +139,8 @@ const styles = StyleSheet.create({
         width: 160,
         height: 48,
         borderRadius: 15,
-        backgroundColor: 'pink'
+        backgroundColor: '#93BAC5'
     }
 });
+
+export default withNavigation(FloatingButton);

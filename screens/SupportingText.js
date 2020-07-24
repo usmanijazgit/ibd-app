@@ -52,7 +52,7 @@ const config ={
 
         const myitems = this.state.myIBDs.map(ibd => {
             return(
-                <ListItem rowkey="id" >
+                <ListItem rowkey="id" onPress={() => this.props.navigation.navigate('PICO', {headingtwobtn: ibd.ibdHeadingTwo, supportingText: ibd.ibdSupportingText})}>
                     <Text style ={styles.listtext}>{ibd.ibdSupportingText}</Text>
                 </ListItem>
             )
@@ -77,11 +77,6 @@ const config ={
                     <Text style ={styles.title}>{headingtwobtn}</Text>
                 </View>
 
-                
-                <Animatable.View animation="slideInRight" duration={500} style={styles.search}>
-                        <Icon name="ios-search" style={{fontSize:16}}/>
-                        <TextInput placeholder="Search" style={{fontSize:16, marginLeft: 10}} />
-                </Animatable.View>
             </View>
 
             
@@ -99,9 +94,11 @@ const config ={
 
                 </ScrollView>
 
-                <View style= {{flexDirection: 'row', justifyContent: 'space-between', paddingRight: 100, paddingBottom: 30, paddingTop: 20}}>
-                    <View style= {[styles.practicalbutton, styles.menu]}><Text style= {{fontSize: 16, color: 'black', fontWeight: '500'}}>Practical Tips</Text></View>
-                    <FloatingButton style={{bottom: 100}} />
+                {/* <FloatingButton /> */}
+
+                <View style= {{ paddingBottom: 65, paddingTop: 20}}>
+                    {/* <View style= {[styles.practicalbutton, styles.menu]}><Text style= {{fontSize: 16, color: 'black', fontWeight: '500'}}>Practical Tips</Text></View> */}
+                    <FloatingButton style={{width: 380}} />
                 </View>
 
             </View>
@@ -122,22 +119,10 @@ const styles = StyleSheet.create({
         flex: 1
     },
     containertwo: {
-        flex: 2.5,
+        flex: 4,
         backgroundColor: "#fff",
         borderTopRightRadius: 60,
         borderTopLeftRadius: 60
-    },
-    search: {
-        height: 50, 
-        width: '95%',
-        marginLeft: '2%',
-        backgroundColor: '#FFF', 
-        flexDirection: 'row', 
-        padding: 10, 
-        alignItems: 'center',
-        borderRadius: 6,
-        borderWidth: 1,
-        marginVertical: 10,
     },
 
     title: {
@@ -151,10 +136,7 @@ const styles = StyleSheet.create({
 
     listtext: {
         fontSize: 15,
-        color: 'blue',
-        // textDecorationLine: 'underline',
-        // padding: 4,
-        // marginTop: 10,
+        color: 'black',
         marginLeft: 5,
         
     },
@@ -173,12 +155,7 @@ const styles = StyleSheet.create({
         color: 'white',
         marginLeft: 10,
     },
-    practicetext: {
-        fontSize: 16,
-        color: 'blue',
-        textDecorationLine: 'underline',
-        width: 100
-    },
+    
     listheading: {
         fontSize: 18,
         fontWeight:'bold',

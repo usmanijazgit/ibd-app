@@ -67,7 +67,7 @@ const config ={
 
         const myitems = this.state.myIBDs.map(ibd => {
             return(
-                <ListItem rowkey="id" onPress={() => this.props.navigation.navigate('PracticeStatement', {headingtwobtn: ibd.ibdHeadingTwo})}>
+                <ListItem rowkey={record => record.ibdSupportingText}  onPress={() => this.props.navigation.navigate('PracticeStatement', {headingtwobtn: ibd.ibdHeadingTwo})}>
                     <Text style ={styles.listtext}>{ibd.ibdHeadingTwo}</Text>
                 </ListItem>
             )
@@ -104,8 +104,6 @@ const config ={
                 </Animatable.View>
 
             </View>
-
-            
 
             <View style={styles.containertwo}>
 

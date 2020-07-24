@@ -159,6 +159,20 @@ const ibdRef = rootRef.child('ibd');
             ibdOutcome: this.state.newIBDOutcome,
 
         });
+
+        this.setState({
+            // newIBDHeadingOne: '',
+            // newIBDHeadingTwo: '',
+            newIBDSubHeading: '',
+            newIBDStatement: '',
+            newIBDSupportingText: '',
+            newIBDPopulation: '',
+            newIBDIntervention: '',
+            newIBDComparator: '',
+            newIBDOutcome: '',
+        });
+
+        alert('Record Added');
     }
       
       render() {

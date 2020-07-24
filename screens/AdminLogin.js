@@ -8,12 +8,13 @@ import {Form, Item, Input, Text, Button} from 'native-base';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
 import Spinner from './actions/Spinner';
+import Success from './actions/Success';
 
 import firebase from 'firebase';
 
 class AdminLogin extends Component {
 
-    state = {email: '', password: '', error: '', loading: false};
+    state = {email: '', password: '', error: '', loading: false, isSuccessful: false};
 
      onButtonPress = () => {
         const {email, password} = this.state; 
@@ -30,7 +31,8 @@ class AdminLogin extends Component {
             email: '',
             password: '',
             loading: false,
-            error: ''
+            error: '',
+            isSuccessful: false
         });
     }
 
@@ -84,8 +86,11 @@ class AdminLogin extends Component {
               </View>
             </View>
           </View>
+
+          <Success isActive={this.state.isSuccessful}/>
         
       </View>
+      
         
      );
     };

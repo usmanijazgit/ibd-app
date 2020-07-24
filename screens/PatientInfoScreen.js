@@ -65,26 +65,26 @@ class PatientInfoScreen extends Component{
       }
 
       onPressNext = () => {
-        if (this.state.newPatientAge.trim() === '') {
-            alert('Enter Patient Age');
-            return;
-        }
+        // if (this.state.newPatientAge.trim() === '') {
+        //     alert('Enter Patient Age');
+        //     return;
+        // }
 
 
-        if (this.state.newPatientAge.trim() <= 0 || this.state.newPatientAge.trim() >= 120 ) {
-            alert('Something Wrong With Patient Age');
-            return;
-        }
+        // if (this.state.newPatientAge.trim() <= 0 || this.state.newPatientAge.trim() >= 120 ) {
+        //     alert('Something Wrong With Patient Age');
+        //     return;
+        // }
 
-        if (this.state.newPatientSex.trim() === '') {
-            alert('Select Patient Sex');
-            return;
-        }
+        // if (this.state.newPatientSex.trim() === '') {
+        //     alert('Select Patient Sex');
+        //     return;
+        // }
 
-        if (this.state.newPatientDisease.trim() === '') {
-            alert('Select Disease Type');
-            return;
-        }
+        // if (this.state.newPatientDisease.trim() === '') {
+        //     alert('Select Disease Type');
+        //     return;
+        // }
 
         patientRef.push({
             PatientAge: this.state.newPatientAge,

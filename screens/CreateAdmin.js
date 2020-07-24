@@ -56,12 +56,18 @@ class CreateAdmin extends Component {
       
         <View style={styles.container}>
 
-            <View style={styles.backbox}>
-                <TouchableOpacity style= {{flexDirection: 'row'}} onPress={() => { this.props.navigation.navigate('AdminHome') }} >
-                    <Icon name="ios-arrow-back" style={{fontSize:25 , color: 'black'}}/>
-                    <Text style ={styles.back}>Back</Text>
-                </TouchableOpacity>
-            </View>
+                <View style={styles.viewStyle}>
+
+                    <View style={styles.backbox}>
+                        <TouchableOpacity style= {{flexDirection: 'row'}} onPress={() => { this.props.navigation.navigate('AdminHome') }} >
+                            <Icon name="ios-arrow-back" style={{fontSize:25 , color: 'black'}}/>
+                            <Text style ={styles.back}>Back</Text>
+                        </TouchableOpacity>
+                    </View>
+
+                    <Icon name="md-log-out" onPress={() => firebase.auth().signOut() } style={{fontSize:30, marginTop: 15, color: 'black', textAlign: "right", marginRight: 20 }}/>
+             
+                </View>
 
     
           <Text style={styles.textContainer}>Create A New Admin</Text>
@@ -103,7 +109,13 @@ const styles = StyleSheet.create({
         position: 'relative',
         backgroundColor: 'white',
       },
-   
+      viewStyle: {
+        // backgroundColor: 'white',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        height: 80,
+    },
       textContainer: {
         // color: '#FCFDFF',
         fontSize: 32,
