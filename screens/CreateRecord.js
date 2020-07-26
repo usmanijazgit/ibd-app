@@ -161,8 +161,8 @@ const ibdRef = rootRef.child('ibd');
         });
 
         this.setState({
-            // newIBDHeadingOne: '',
-            // newIBDHeadingTwo: '',
+            newIBDHeadingOne: '',
+            newIBDHeadingTwo: '',
             newIBDSubHeading: '',
             newIBDStatement: '',
             newIBDSupportingText: '',

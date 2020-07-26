@@ -11,8 +11,8 @@ class Success extends React.Component {
 
     state = {
         top: new Animated.Value(0),
-        opacity: new Animated.Value(0),
-    }
+        opacity: new Animated.Value(0)
+    };
 
     componentDidMount() {
         this.animation.play();
@@ -36,7 +36,7 @@ class Success extends React.Component {
 
     render() {
         return (
-            <AnimatedContainer>
+            <AnimatedContainer style={{ top: this.state.top, opacity: this.state.opacity }}>
                 <LottieView 
                     source={require("../../assets/lottie-checked-done.json")}
                     autoPlay={false}

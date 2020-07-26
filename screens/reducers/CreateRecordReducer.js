@@ -1,15 +1,15 @@
 import { RECORD_UPDATE } from '../actions/types';
 
 const INITIAL_STATE = {
-    newIBDHeadingOne: '',
-    newIBDHeadingTwo: '',
-    newIBDSubHeading: '',
-    newIBDStatement: '',
-    newIBDSupportingText: '',
-    newIBDPopulation: '',
-    newIBDIntervention: '',
-    newIBDComparator: '',
-    newIBDOutcome: ''
+    headingone: '', 
+    headingtwo: '', 
+    subheading: '', 
+    statement: '',
+    supportingtext: '', 
+    population: '',
+    intervention: '', 
+    comparator: '',
+    outcome: '',
 };
 
 export default (state = INITIAL_STATE, action) => {

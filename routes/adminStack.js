@@ -6,6 +6,7 @@ import {createAppContainer} from 'react-navigation';
 import AdminHome from '../screens/AdminHome';
 import CreateAdmin from '../screens/CreateAdmin';
 import CreateRecord from '../screens/CreateRecord';
+import RecordCreation from '../screens/RecordCreation';
 
 
 
@@ -17,9 +18,12 @@ const AdminStack = createStackNavigator({
     CreateAdmin: {
         screen: CreateAdmin
     },
-    CreateRecord: {
-        screen: CreateRecord
-    }   
+    RecordCreation: {
+        screen: RecordCreation
+    } 
+    // CreateRecord: {
+    //     screen: CreateRecord
+    // }   
 
 }, {
     defaultNavigationOptions: {

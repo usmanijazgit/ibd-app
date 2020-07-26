@@ -32,7 +32,7 @@ class AdminLogin extends Component {
             password: '',
             loading: false,
             error: '',
-            isSuccessful: false
+            isSuccessful: true
         });
     }
 
@@ -56,6 +56,8 @@ class AdminLogin extends Component {
     return (
       
         <View style={styles.container}>
+
+           
 
             <View style={styles.backbox}>
                 <TouchableOpacity style= {{flexDirection: 'row'}} onPress={() => { this.props.navigation.navigate('PatientInfo') }} >
@@ -84,10 +86,14 @@ class AdminLogin extends Component {
               <View style={styles.Button}>
                 {this.renderButton()}
               </View>
+
             </View>
+
+            {/* <Success isActive={false}/> */}
+
           </View>
 
-          <Success isActive={this.state.isSuccessful}/>
+         
         
       </View>
       

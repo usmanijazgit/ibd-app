@@ -136,7 +136,7 @@ const styles = StyleSheet.create({
 
     listtext: {
         fontSize: 15,
-        color: 'black',
+        color: 'blue',
         marginLeft: 5,
         
     },

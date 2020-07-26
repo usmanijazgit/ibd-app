@@ -6,7 +6,7 @@ import Navigator from './routes/homeStack';
 import AdminNavigator from './routes/adminStack';
 
 import firebase from 'firebase';
-import { render } from 'react-dom';
+
 
 import { YellowBox } from 'react-native';
 import _ from 'lodash';

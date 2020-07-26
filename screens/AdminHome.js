@@ -13,7 +13,7 @@ export default function AdminHome({ navigation }) {
     }
 
     const screenchangetwo = () => {
-        navigation.navigate('CreateRecord');
+        navigation.navigate('RecordCreation');
     }
 
    
