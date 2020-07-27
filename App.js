@@ -45,7 +45,7 @@ constructor () {
 
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {
-      setInterval(() => {
+      setTimeout(() => {
         this.setState({loggedIn: true});
       }, 2000);
     } else {
