@@ -22,7 +22,10 @@ class AdminLogin extends Component {
         this.setState({error: '', loading: true});
 
         firebase.auth().signInWithEmailAndPassword(email, password)
-        .then(this.onLoginSuccess.bind(this))    
+        .then(() => {
+          // setInterval(this.onLoginSuccess.bind(this), 3000);
+          this.setState({ isSuccessful: true });
+        })    
         .catch(this.onLoginFail.bind(this));
     }
 
@@ -53,7 +56,9 @@ class AdminLogin extends Component {
     }
 
     render() { 
-    return (
+      const { isSuccessful } = this.state;
+
+      return (
       
         <View style={styles.container}>
 
@@ -89,7 +94,7 @@ class AdminLogin extends Component {
 
             </View>
 
-            {/* <Success isActive={false}/> */}
+            {isSuccessful ? <Success isActive={false}/>: null}
 
           </View>
 

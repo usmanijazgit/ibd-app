@@ -1,12 +1,14 @@
 import React from 'react';
 import { StyleSheet, View, Button } from 'react-native';
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
 import Spinner from './screens/actions/Spinner'
 
 import Navigator from './routes/homeStack';
 import AdminNavigator from './routes/adminStack';
 
 import firebase from 'firebase';
-
+import reducer from './screens/reducers';
 
 import { YellowBox } from 'react-native';
 import _ from 'lodash';
@@ -18,6 +20,8 @@ console.warn = message => {
     _console.warn(message);
   }
 };
+
+const store = createStore(reducer);
 
 class App extends React.Component {
 
@@ -41,7 +45,9 @@ constructor () {
 
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {
-      this.setState({loggedIn: true});
+      setInterval(() => {
+        this.setState({loggedIn: true});
+      }, 2000);
     } else {
       this.setState({loggedIn: false});
     }
@@ -65,10 +71,11 @@ constructor () {
 
   render() {
     return (
-      <View style={styles.screen}>
-        {this.renderContent()}
-      </View>
-
+      <Provider store={store}>
+        <View style={styles.screen}>
+          {this.renderContent()}
+        </View>        
+      </Provider>
     );
   };
 };

@@ -45,7 +45,7 @@ const config ={
         
         ibdRef.orderByChild('ibdHeadingOne').equalTo(headingonebtn).once('value', snapshot => {
             this.setState({ myIBDs:  Object.values(snapshot.val()), inMemory:  Object.values(snapshot.val()), isLoading: false});
-            });
+        });
 
     }
 
@@ -63,9 +63,18 @@ const config ={
     }    
     
     render() {
+        const { myIBDs } = this.state;
         const {headingonebtn} = this.props.navigation.state.params;
 
-        const myitems = this.state.myIBDs.map(ibd => {
+        console.log('------data-------', this.state.myIBDs);
+        const headingTwoList = [];
+        const iBDList = [];
+        for(let i = 0; i < myIBDs.length; i++) {
+            if(headingTwoList.includes(myIBDs[i].ibdHeadingTwo)) continue;
+            headingTwoList.push(myIBDs[i].ibdHeadingTwo);
+            iBDList.push(myIBDs[i]);
+        }
+        const myitems = iBDList.map(ibd => {
             return(
                 <ListItem rowkey={record => record.ibdSupportingText}  onPress={() => this.props.navigation.navigate('PracticeStatement', {headingtwobtn: ibd.ibdHeadingTwo})}>
                     <Text style ={styles.listtext}>{ibd.ibdHeadingTwo}</Text>

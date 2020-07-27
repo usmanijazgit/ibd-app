@@ -35,17 +35,21 @@ class Success extends React.Component {
     //   style={{ top: this.state.top, opacity: this.state.opacity }}
 
     render() {
+        const { isActive } = this.props;
+
         return (
-            <AnimatedContainer style={{ top: this.state.top, opacity: this.state.opacity }}>
-                <LottieView 
-                    source={require("../../assets/lottie-checked-done.json")}
-                    autoPlay={false}
-                    loop={false}
-                    ref={animation => {
-                        this.animation = animation;
-                    }}
-                />
-            </AnimatedContainer>
+            <>
+                <AnimatedContainer>
+                    <LottieView 
+                        source={require("../../assets/lottie-checked-done.json")}
+                        autoPlay={false}
+                        loop={false}
+                        ref={animation => {
+                            this.animation = animation;
+                        }}
+                    />
+                </AnimatedContainer>
+            </>
         )
     }
 }
