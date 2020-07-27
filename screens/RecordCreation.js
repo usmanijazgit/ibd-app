@@ -1,8 +1,8 @@
 import React , { Component} from 'react';
 import { StyleSheet, View, Button, Alert, TextInput, FlatList, Text, ScrollView, TouchableHighlight, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
-import { Provider, connect} from 'react-redux';
-import {recordUpdate} from './actions';
+import {connect} from 'react-redux';
+import {recordUpdate, recordCreate} from './actions';
 
 import RNPickerSelect from 'react-native-picker-select';
 
@@ -10,34 +10,24 @@ import firebase from 'firebase';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
 
-
-// const config ={
-//     apiKey: "AIzaSyBHKV7x97xwDrUVnc7Z6wPCiXV8Yc-_nO8",
-//           authDomain: "ibdtool-2a1c7.firebaseapp.com",
-//           databaseURL: "https://ibdtool-2a1c7.firebaseio.com",
-//           projectId: "ibdtool-2a1c7",
-//           storageBucket: "ibdtool-2a1c7.appspot.com",
-//           messagingSenderId: "633888609862",
-//           appId: "1:633888609862:web:4a4eff1a47f363aa5edc47",
-//           measurementId: "G-LF7BLTRE1G",
-//           presistance: true,
-//     };
-
-//     if (!firebase.apps.length) {
-//           firebase.initializeApp(config);
-//       }
-
-
-// const rootRef = firebase.database().ref();
-// const ibdRef = rootRef.child('ibd');
-
-
-
  class RecordCreation extends Component{
+
+    onPressAdd() {
+        const {headingone, 
+            headingtwo, subheading, 
+            statement, supportingtext, 
+            population, intervention, 
+            comparator, outcome} = this.props;
+
+        this.props.recordCreate({headingone: headingone || 'Nutrition Assessment', 
+            headingtwo, subheading, 
+            statement, supportingtext, 
+            population, intervention, 
+            comparator, outcome});
+    }
 
       render() {
         
-      
         return (
            
         <KeyboardAwareScrollView>
@@ -63,8 +53,7 @@ import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view
                 <Text style={styles.textInputHeading}>Heading One:</Text>
                
                 <RNPickerSelect placeholder={{
-                label: 'Enter Heading One',
-                value: null,
+                label: 'Enter Heading One'
                 }} placeholderTextColor= 'black' style={{...pickerSelectStyles}}
                 items={[
                     { label: 'Nutrition Assessment', value: 'Nutrition Assessment' },
@@ -72,8 +61,8 @@ import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view
                     { label: 'Dietary Management', value: 'Dietary Management' }
                     
                 ]}
-                value = {this.props.headingone}
-                onChangeText={text => this.props.recordUpdate({prop: 'headingone', value: text})}
+                selectedValue = {this.props.headingone}
+                onValueChange={text => this.props.recordUpdate({prop: 'headingone', value: text})}
                 />
 
                 <Text style={styles.textInputHeading}>Heading Two:</Text>
@@ -173,21 +162,21 @@ import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view
           </View>
 
 
-            <TouchableHighlight
+            {/* <TouchableHighlight
                 style={[styles.button, styles.addbutton]}
-                onPress={this.onPressAdd}
+                onPress={this.onPressAdd.bind(this)}
                 >
                     <Text style={[styles.btnname, styles.addbtnname]}>
                             Add Record
                     </Text>
-            </TouchableHighlight>
+            </TouchableHighlight> */}
+
+            <Button title= "Add Record" onPress={this.onPressAdd.bind(this)}>
+                        
+            </Button>
        
         </KeyboardAwareScrollView>  
 
-        
- 
-          
-    
         );
       };
     };
@@ -335,4 +324,6 @@ const pickerSelectStyles = StyleSheet.create({
  }   
 
 
-export default connect(mapStateToProps, {recordUpdate}) (RecordCreation);
+export default connect(mapStateToProps, {
+    recordUpdate, recordCreate
+}) (RecordCreation);
