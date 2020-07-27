@@ -19,7 +19,7 @@ import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view
             population, intervention, 
             comparator, outcome} = this.props;
 
-        this.props.recordCreate({headingone: headingone || 'Nutrition Assessment', 
+        this.props.recordCreate({headingone, 
             headingtwo, subheading, 
             statement, supportingtext, 
             population, intervention, 

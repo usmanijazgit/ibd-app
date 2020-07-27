@@ -1,6 +1,6 @@
 import firebase from 'firebase';
 
-import { RECORD_UPDATE } from './types';
+import { RECORD_UPDATE, RECORD_CREATE } from './types';
 
 const config ={
     apiKey: "AIzaSyBHKV7x97xwDrUVnc7Z6wPCiXV8Yc-_nO8",
@@ -34,10 +34,68 @@ export const recordCreate = ({
     statement, supportingtext, 
     population, intervention, 
     comparator, outcome }) => {
-            // const {currentUser} = firebase.auth();
-            ibdRef
-            .push({headingone, headingtwo, subheading, 
-                statement, supportingtext, 
-                population, intervention, 
-                comparator, outcome });
+    // const {currentUser} = firebase.auth();
+            
+   return (dispatch) => {
+
+    ibdRef.push({headingone, headingtwo, subheading, 
+        statement, supportingtext, 
+        population, intervention, 
+        comparator, outcome })
+        .then(() => {
+            dispatch({type: RECORD_CREATE });
+        });
+
+
+        alert('Record Added');
+    }
+           
     };
+
+
+
+
+    // if (headingone.trim() === '') {
+    //     alert('Heading One Field is Blank');
+    //     return;
+    // }
+
+    // if (headingtwo.trim() === '') {
+    //     alert('Heading Two Field is Blank');
+    //     return;
+    // }
+
+    // if (subheading.trim() === '') {
+    //     alert('Subheading Field is Blank');
+    //     return;
+    // }
+
+    // if (statement.trim() === '') {
+    //     alert('Statement Field is Blank');
+    //     return;
+    // }
+
+    // if (supportingtext.trim() === '') {
+    //     alert('Supporting Text Field is Blank');
+    //     return;
+    // }
+
+    // if (population.trim() === '') {
+    //     alert('Population Field is Blank');
+    //     return;
+    // }
+
+    // if (intervention.trim() === '') {
+    //     alert('Intervention Field is Blank');
+    //     return;
+    // }
+
+    // if (comparator.trim() === '') {
+    //     alert('Comparator Field is Blank');
+    //     return;
+    // }
+
+    // if (outcome.trim() === '') {
+    //     alert('Outcome Field is Blank');
+    //     return;
+    // }

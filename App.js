@@ -10,6 +10,8 @@ import AdminNavigator from './routes/adminStack';
 import firebase from 'firebase';
 import reducer from './screens/reducers';
 
+import Router from './Router';
+
 import { YellowBox } from 'react-native';
 import _ from 'lodash';
 
@@ -45,7 +47,7 @@ constructor () {
 
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {
-      setInterval(() => {
+      setTimeout(() => {
         this.setState({loggedIn: true});
       }, 2000);
     } else {
