@@ -1,6 +1,7 @@
 import firebase from 'firebase';
-
-import { RECORD_UPDATE, RECORD_CREATE } from './types';
+import { RECORD_UPDATE, RECORD_CREATE, RECORD_FETCH_SUCCESS } from './types';
+import { Actions } from "react-native-router-flux";
+require('@firebase/database');
 
 const config ={
     apiKey: "AIzaSyBHKV7x97xwDrUVnc7Z6wPCiXV8Yc-_nO8",
@@ -34,7 +35,6 @@ export const recordCreate = ({
     statement, supportingtext, 
     population, intervention, 
     comparator, outcome }) => {
-    // const {currentUser} = firebase.auth();
             
    return (dispatch) => {
 
@@ -44,12 +44,21 @@ export const recordCreate = ({
         comparator, outcome })
         .then(() => {
             dispatch({type: RECORD_CREATE });
+            Actions.pop();
         });
 
 
         alert('Record Added');
     }
            
+    };
+
+    export const recordsFetch = () => {
+        return (dispatch) => {
+            ibdRef.on('value', snapshot => {
+                dispatch({type: RECORD_FETCH_SUCCESS, payload: snapshot.val()})
+            });
+        };
     };
 
 

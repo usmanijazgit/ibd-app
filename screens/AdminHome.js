@@ -9,11 +9,11 @@ import firebase from 'firebase';
 export default function AdminHome({ navigation }) {
 
    const screenchangeone = () => {
-            navigation.navigate('CreateAdmin');
+            navigation.navigate('RecordCreation');
     }
 
     const screenchangetwo = () => {
-        navigation.navigate('RecordCreation');
+        navigation.navigate('RecordList');
     }
 
    
