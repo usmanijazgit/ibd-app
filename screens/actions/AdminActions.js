@@ -38,6 +38,51 @@ export const recordCreate = ({
             
    return (dispatch) => {
 
+    if (headingone.trim() === '') {
+        alert('Heading One Field is Blank');
+        return;
+    }
+
+    if (headingtwo.trim() === '') {
+        alert('Heading Two Field is Blank');
+        return;
+    }
+
+    if (subheading.trim() === '') {
+        alert('Subheading Field is Blank');
+        return;
+    }
+
+    if (statement.trim() === '') {
+        alert('Statement Field is Blank');
+        return;
+    }
+
+    if (supportingtext.trim() === '') {
+        alert('Supporting Text Field is Blank');
+        return;
+    }
+
+    if (population.trim() === '') {
+        alert('Population Field is Blank');
+        return;
+    }
+
+    if (intervention.trim() === '') {
+        alert('Intervention Field is Blank');
+        return;
+    }
+
+    if (comparator.trim() === '') {
+        alert('Comparator Field is Blank');
+        return;
+    }
+
+    if (outcome.trim() === '') {
+        alert('Outcome Field is Blank');
+        return;
+    }
+
     ibdRef.push({headingone, headingtwo, subheading, 
         statement, supportingtext, 
         population, intervention, 
@@ -47,6 +92,7 @@ export const recordCreate = ({
             Actions.pop();
         });
 
+        
 
         alert('Record Added');
     }
@@ -60,51 +106,3 @@ export const recordCreate = ({
             });
         };
     };
-
-
-
-
-    // if (headingone.trim() === '') {
-    //     alert('Heading One Field is Blank');
-    //     return;
-    // }
-
-    // if (headingtwo.trim() === '') {
-    //     alert('Heading Two Field is Blank');
-    //     return;
-    // }
-
-    // if (subheading.trim() === '') {
-    //     alert('Subheading Field is Blank');
-    //     return;
-    // }
-
-    // if (statement.trim() === '') {
-    //     alert('Statement Field is Blank');
-    //     return;
-    // }
-
-    // if (supportingtext.trim() === '') {
-    //     alert('Supporting Text Field is Blank');
-    //     return;
-    // }
-
-    // if (population.trim() === '') {
-    //     alert('Population Field is Blank');
-    //     return;
-    // }
-
-    // if (intervention.trim() === '') {
-    //     alert('Intervention Field is Blank');
-    //     return;
-    // }
-
-    // if (comparator.trim() === '') {
-    //     alert('Comparator Field is Blank');
-    //     return;
-    // }
-
-    // if (outcome.trim() === '') {
-    //     alert('Outcome Field is Blank');
-    //     return;
-    // }

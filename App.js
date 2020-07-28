@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, View, Button } from 'react-native';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import Spinner from './screens/actions/Spinner'
 
@@ -9,6 +9,7 @@ import AdminNavigator from './routes/adminStack';
 
 import firebase from 'firebase';
 import reducer from './screens/reducers';
+import thunk from 'redux-thunk';
 
 import Router from './Router';
 
@@ -23,7 +24,8 @@ console.warn = message => {
   }
 };
 
-const store = createStore(reducer);
+const store = createStore(reducer, applyMiddleware(thunk));
+
 
 class App extends React.Component {
 

@@ -38,7 +38,7 @@ export default function AdminHome({ navigation }) {
                 <TouchableOpacity onPress={screenchangeone}>
                     <View style={[styles.cards, styles.cardone]}>
                         <Text style={styles.name}>
-                            Create Admin
+                            All Record (Testing)
                         </Text>
                     </View>
                 </TouchableOpacity>
