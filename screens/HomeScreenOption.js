@@ -66,7 +66,7 @@ const config ={
         const { myIBDs } = this.state;
         const {headingonebtn} = this.props.navigation.state.params;
 
-        console.log('------data-------', this.state.myIBDs);
+      //  console.log('------data-------', this.state.myIBDs);
         const headingTwoList = [];
         const iBDList = [];
         for(let i = 0; i < myIBDs.length; i++) {

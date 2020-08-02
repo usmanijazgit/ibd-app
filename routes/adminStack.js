@@ -8,6 +8,7 @@ import CreateAdmin from '../screens/CreateAdmin';
 import CreateRecord from '../screens/CreateRecord';
 import RecordCreation from '../screens/RecordCreation';
 import RecordList from '../screens/RecordList';
+import RecordEdit from '../screens/RecordEdit';
 
 const AdminStack = createStackNavigator({
    
@@ -22,7 +23,10 @@ const AdminStack = createStackNavigator({
     },
     RecordCreation: {
         screen: RecordCreation
-    } 
+    },
+    RecordEdit: {
+        screen: RecordEdit
+    }  
     // CreateRecord: {
     //     screen: CreateRecord
     // }   
