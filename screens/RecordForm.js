@@ -16,7 +16,7 @@ class RecordForm extends Component {
             <View style={styles.viewStyle}>
 
                 <View style={styles.backbox}>
-                    <TouchableOpacity style= {{flexDirection: 'row'}} onPress={() => { this.props.navigation.navigate('AdminHome') }} >
+                    <TouchableOpacity style= {{flexDirection: 'row'}} onPress={() => { this.props.navigation.navigate('RecordList') }} >
                         <Icon name="ios-arrow-back" style={{fontSize:25 , color: 'black'}}/>
                         <Text style ={styles.back}>Back</Text>
                     </TouchableOpacity>

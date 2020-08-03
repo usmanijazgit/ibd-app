@@ -1,5 +1,5 @@
 import firebase from 'firebase';
-import { RECORD_UPDATE, RECORD_CREATE, RECORD_FETCH_SUCCESS } from './types';
+import { RECORD_UPDATE, RECORD_CREATE, RECORD_FETCH_SUCCESS, RECORD_SAVE_SUCCESS } from './types';
 import { Actions } from "react-native-router-flux";
 require('@firebase/database');
 
@@ -97,6 +97,74 @@ export const recordCreate = ({
         alert('Record Added');
     }
            
+    };
+
+    export const recordSave = ({
+        headingone, headingtwo, subheading, 
+        statement, supportingtext, 
+        population, intervention, 
+        comparator, outcome, uid }) => {
+                
+       return (dispatch) => {
+    
+        if (headingone.trim() === '') {
+            alert('Heading One Field is Blank');
+            return;
+        }
+    
+        if (headingtwo.trim() === '') {
+            alert('Heading Two Field is Blank');
+            return;
+        }
+    
+        if (subheading.trim() === '') {
+            alert('Subheading Field is Blank');
+            return;
+        }
+    
+        if (statement.trim() === '') {
+            alert('Statement Field is Blank');
+            return;
+        }
+    
+        if (supportingtext.trim() === '') {
+            alert('Supporting Text Field is Blank');
+            return;
+        }
+    
+        if (population.trim() === '') {
+            alert('Population Field is Blank');
+            return;
+        }
+    
+        if (intervention.trim() === '') {
+            alert('Intervention Field is Blank');
+            return;
+        }
+    
+        if (comparator.trim() === '') {
+            alert('Comparator Field is Blank');
+            return;
+        }
+    
+        if (outcome.trim() === '') {
+            alert('Outcome Field is Blank');
+            return;
+        }
+    
+        firebase.database().ref(`ibd/${uid}`)
+        .set({headingone, headingtwo, subheading, 
+            statement, supportingtext, 
+            population, intervention, 
+            comparator, outcome })
+            .then(() => {
+                dispatch({type: RECORD_SAVE_SUCCESS });
+                Actions.pop();
+            });
+            
+            alert('Record Updated');
+        };
+               
     };
 
     export const recordsFetch = () => {

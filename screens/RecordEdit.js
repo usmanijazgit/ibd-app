@@ -2,12 +2,14 @@ import _ from 'lodash';
 import React, {Component} from 'react';
 import { StyleSheet, View, Button} from 'react-native';
 import RecordForm from './RecordForm';
-import {recordUpdate} from './actions';
+import {recordUpdate, recordSave} from './actions';
 import {connect} from 'react-redux';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
-
+import Confirm from './Confirm';
 
 class RecordEdit extends Component {
+
+    state = {showModal: false};
 
     componentDidMount() {
         _.each(this.props.navigation.getParam('record'), (value, prop) => {
@@ -22,11 +24,11 @@ class RecordEdit extends Component {
             population, intervention, 
             comparator, outcome} = this.props;
 
-        console.log(headingone, 
+        this.props.recordSave({headingone, 
             headingtwo, subheading, 
             statement, supportingtext, 
             population, intervention, 
-            comparator, outcome)
+            comparator, outcome, uid: this.props.navigation.getParam('record').uid})
     }
 
 
@@ -35,6 +37,14 @@ class RecordEdit extends Component {
             <KeyboardAwareScrollView>
                  <RecordForm {...this.props}/>
                  <Button title= "Save Changes" onPress={this.onPressSave.bind(this)}></Button>
+                 
+                 <Button title= "Delete Record" onPress={() => this.setState({showModal: !this.state.showModal})}></Button>
+
+                 <Confirm 
+                    visible={this.state.showModal}
+                 >
+                     Are you sure you want to DELETE the record?
+                 </Confirm>  
             </KeyboardAwareScrollView>  
         )
     }
@@ -54,4 +64,6 @@ const mapStateToProps = (state) => {
        comparator, outcome}; 
 };   
 
-export default connect(mapStateToProps, {recordUpdate}) (RecordEdit);
+export default connect(mapStateToProps, {
+    recordUpdate, recordSave
+}) (RecordEdit);

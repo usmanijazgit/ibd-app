@@ -23,9 +23,6 @@ import RecordForm from './RecordForm';
     }
 
       render() {
-        // const {record} = this.props.navigation.state.params;
-        // console.log(this.props.record);
-        // console.log(this.props.navigation.state.params);
         
         return (
            
