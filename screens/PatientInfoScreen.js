@@ -182,7 +182,7 @@ class PatientInfoScreen extends Component{
 
             <View style={styles.button}><Button style={styles.btnText} title = "Admin Login" onPress={adminloginscreen}/></View> */}
             
-            <View style={{flexDirection: 'row'}}>
+            <View style={{flexDirection: 'row',  marginLeft: 'auto'}}>
                 <TouchableOpacity style={styles.button} onPress={() => { this.props.navigation.navigate('AdminLogin') }} >
                     <Text style={styles.btnText}>Admin Login</Text>
                 </TouchableOpacity>
@@ -237,15 +237,17 @@ const styles = StyleSheet.create({
         width: 160,
         marginTop: 50,
         backgroundColor: 'black',
-        height: 80,
+        height: 100,
         borderRadius: 10,
-        margin: 15
+        margin: 15,
+        justifyContent: 'center',
+        alignItems: 'center',
+       
+        // alignSelf: 'flex-end'
     },
     btnText: {
         color: 'white',
         fontSize: 22,
-        textAlign: 'center',
-        top: '30%'
       },
     textInput:{
         fontSize: 16,

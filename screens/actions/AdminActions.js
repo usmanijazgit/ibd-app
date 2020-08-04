@@ -1,5 +1,5 @@
 import firebase from 'firebase';
-import { RECORD_UPDATE, RECORD_CREATE, RECORD_FETCH_SUCCESS, RECORD_SAVE_SUCCESS } from './types';
+import { RECORD_UPDATE, RECORD_CREATE, RECORD_FETCH_SUCCESS, RECORD_SAVE_SUCCESS, RECORD_DELETE_SUCCESS } from './types';
 import { Actions } from "react-native-router-flux";
 require('@firebase/database');
 
@@ -160,11 +160,24 @@ export const recordCreate = ({
             .then(() => {
                 dispatch({type: RECORD_SAVE_SUCCESS });
                 Actions.pop();
+                alert('Record Updated');
             });
             
-            alert('Record Updated');
+            
         };
                
+    };
+
+    export const recordDelete = ({uid}) => {
+        return (dispatch) => {
+            firebase.database().ref(`ibd/${uid}`)
+            .remove()
+            .then(() => {
+                dispatch({type: RECORD_DELETE_SUCCESS });
+                Actions.pop();
+                
+            })
+        };
     };
 
     export const recordsFetch = () => {
@@ -174,3 +187,4 @@ export const recordCreate = ({
             });
         };
     };
+

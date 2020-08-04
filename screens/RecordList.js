@@ -5,6 +5,7 @@ import { FlatList, View, Text, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import ListItem from './CreateRecordListItem';
 import { recordsFetch } from './actions';
+import { withNavigation } from 'react-navigation';
 import firebase from 'firebase';
 
 class RecordList extends Component {
@@ -21,28 +22,34 @@ class RecordList extends Component {
 
             <View style={styles.container}>
 
-                <View style={styles.viewStyle}>
+                
+                    <View style={styles.viewStyle}>
 
-                    <View style={styles.backbox}>
-                        <TouchableOpacity style= {{flexDirection: 'row'}} onPress={() => { this.props.navigation.navigate('AdminHome') }} >
-                            <Icon name="ios-arrow-back" style={{fontSize:25 , color: 'black'}}/>
-                            <Text style ={styles.back}>Back</Text>
-                        </TouchableOpacity>
+                        <View style={styles.backbox}>
+                            <TouchableOpacity style= {{flexDirection: 'row'}} onPress={() => { this.props.navigation.navigate('AdminHome') }} >
+                                <Icon name="ios-arrow-back" style={{fontSize:25 , color: 'black'}}/>
+                                <Text style ={styles.back}>Back</Text>
+                            </TouchableOpacity>
+                        </View>
+
+                        <Icon name="md-log-out" onPress={() => firebase.auth().signOut() } style={{fontSize:30, marginTop: 15, color: 'black', textAlign: "right", marginRight: 20 }}/>
+
                     </View>
 
-                    <Icon name="md-log-out" onPress={() => firebase.auth().signOut() } style={{fontSize:30, marginTop: 15, color: 'black', textAlign: "right", marginRight: 20 }}/>
 
-                </View>
-
-
-                <Text style={styles.textContainer}>Records</Text>
-
+                    <Text style={styles.textContainer}>Records</Text>
                     
+                <View style={styles.containerone}>
+
+                    <TouchableOpacity style={styles.createRecordButton} onPress={() => this.props.navigation.navigate('RecordCreation')}>
+                        <Text style={styles.createRecordText}>Create Record</Text>
+                    </TouchableOpacity>
+        
                     <FlatList 
                     data={this.props.records}
                     keyExtractor={(item) => item.key}
                     renderItem={this.renderItem} />
-
+                </View>
             </View>
         )
     }
@@ -63,9 +70,15 @@ export default connect(mapStateToProps, {recordsFetch}) (RecordList);
 
 const styles = {
     container: {
-        flex: 1,
+        flex: 2,
         position: 'relative',
-        backgroundColor: 'white',
+        backgroundColor: '#EA8332',
+      },
+      containerone: {
+        flex: 3,
+        backgroundColor: "#fff",
+        // borderTopRightRadius: 60,
+        borderTopLeftRadius: 80
       },
       viewStyle: {
         flexDirection: 'row',
@@ -76,9 +89,10 @@ const styles = {
       textContainer: {
         fontSize: 32,
         position: 'relative',
-        // top: '4%',
+        bottom: '2%',
         alignSelf: 'center',
         letterSpacing: 3.5,
+        color: 'white'
       },
     back: {
         fontSize: 20,
@@ -90,4 +104,19 @@ const styles = {
         paddingLeft: 10,
         width: 80
     },
+    createRecordButton: {
+        backgroundColor: "#C2004B",
+        width: 130,
+        height: 60,
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginLeft: 'auto',
+        marginRight: 10,
+        marginTop: 25,
+        borderRadius: 10
+    },
+    createRecordText: {
+        fontSize: 18,
+        color: 'white'
+    }
   }

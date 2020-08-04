@@ -1,36 +1,56 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Text, TouchableOpacity} from 'react-native';
+import { StyleSheet, View, Text, TouchableOpacity, Button} from 'react-native';
 
 import Icon from 'react-native-vector-icons/Ionicons'
 import { TextInput } from 'react-native-gesture-handler';
 import * as Animatable from 'react-native-animatable';
+import Menu from './actions/Menu';
+import { withNavigation } from 'react-navigation';
+
+import * as Analytics from 'expo-firebase-analytics';
 
 
-export default function HomeScreen({ navigation }) {
+class HomeScreen extends Component {
 
-   const screenchangeone = () => {
-            navigation.navigate('HomeOption', {headingonebtn: 'Nutrition Assessment'});
+   state = {menuOpen: false}
+
+   onButtonPress = () => {
+    const { menuOpen } = this.state;
+      this.setState({ menuOpen: !menuOpen });
     }
 
-    const screenchangetwo = () => {
-        navigation.navigate('HomeOption', {headingonebtn: 'Nutrition Screening'});
+    screenchangeone = () => {
+        this.props.navigation.navigate('HomeOption', {headingonebtn: 'Nutrition Assessment'});
     }
 
-    const screenchangethree = () => {
-        navigation.navigate('HomeOption', {headingonebtn: 'Dietary Management'});
+     screenchangetwo = () => {
+        this.props.navigation.navigate('HomeOption', {headingonebtn: 'Nutrition Screening'});
+    }
+
+     screenchangethree = () => {
+        this.props.navigation.navigate('HomeOption', {headingonebtn: 'Dietary Management'});
     }
 
 
-    const backscreen = () => {
-        navigation.navigate('PatientInfo');
+     backscreen = () => {
+        this.props.navigation.navigate('PatientInfo');
     }
+
+    
+
+    render() {
+
+     const { menuOpen } = this.state;
 
     return (
         <View style={styles.container}>
+
+            {menuOpen ? <Menu isActive={false}/>: null}
+
             <View style={styles.containerone}>
 
                 <View style={styles.backbox}>
-                    <TouchableOpacity style= {{flexDirection: 'row'}} onPress={backscreen}>
+                    <TouchableOpacity style= {{flexDirection: 'row'}} onPress={this.backscreen.bind(this)}>
                         <Icon name="ios-arrow-back" style={{fontSize:25 , color: 'white'}}/>
                         <Text style ={styles.back}>Back</Text>
                     </TouchableOpacity>
@@ -40,7 +60,7 @@ export default function HomeScreen({ navigation }) {
                 <View style={styles.boxtwo}>
                     
                     <Text style ={styles.title}>IBD Tool</Text>
-                    <Icon name="ios-settings" style={{fontSize:30, marginTop: 30, color: 'white'}}/>
+                    <Icon onPress={this.onButtonPress.bind(this)} name="ios-menu" style={{fontSize:30, marginTop: 30, color: 'white'}}/>
                 </View>
 
             </View>
@@ -48,29 +68,49 @@ export default function HomeScreen({ navigation }) {
             <View style={styles.containertwo}>
                 <View style={styles.line}></View>
 
-                <TouchableOpacity onPress={screenchangeone}>
-                    <View style={[styles.cards, styles.cardone]}>
+                <TouchableOpacity onPress={this.screenchangeone.bind(this)}>
+                    <View style={[styles.cards, styles.cardone]}
+                        onPress={
+                            Analytics.logEvent('Nutrition_Assessment_Button', {
+                                contentType: 'Button' 
+                            })
+                        } 
+                    >
                         <Text style={styles.name}>
                             Nutrition Assessment
                         </Text>
                     </View>
                 </TouchableOpacity>
 
-                <TouchableOpacity onPress={screenchangetwo}>
-                    <View style={[styles.cards, styles.cardtwo]}>
+                <TouchableOpacity onPress={this.screenchangetwo.bind(this)}>
+                    <View style={[styles.cards, styles.cardtwo]}
+                         onPress={
+                            Analytics.logEvent('Nutrition_Screening_Button', {
+                                contentType: 'Button' 
+                            })
+                        } 
+                    >
                         <Text style={styles.name}>
                           Nutrition Screening
                         </Text>
                     </View>
                 </TouchableOpacity>
 
-                <TouchableOpacity onPress={screenchangethree}>
-                    <View style={[styles.cards, styles.cardthree]}>
+                <TouchableOpacity onPress={this.screenchangethree.bind(this)}>
+                    <View style={[styles.cards, styles.cardthree]} 
+                        onPress={
+                            Analytics.logEvent('Dietary_Management_Button', {
+                                contentType: 'Button' 
+                            })
+                        } 
+                    >
                         <Text style={styles.name}>
                             Dietary Management
                         </Text>
                     </View>
                 </TouchableOpacity>
+
+                
 
             </View>
 
@@ -81,6 +121,8 @@ export default function HomeScreen({ navigation }) {
 
         
     );
+
+};
 
 };
 
@@ -168,3 +210,5 @@ const styles = StyleSheet.create({
     },
   
 });
+
+export default withNavigation(HomeScreen);

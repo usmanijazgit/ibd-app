@@ -9,7 +9,7 @@ import firebase from 'firebase';
 export default function AdminHome({ navigation }) {
 
    const screenchangeone = () => {
-            navigation.navigate('RecordCreation');
+            navigation.navigate('CreateAdmin');
     }
 
     const screenchangetwo = () => {
@@ -38,7 +38,7 @@ export default function AdminHome({ navigation }) {
                 <TouchableOpacity onPress={screenchangeone}>
                     <View style={[styles.cards, styles.cardone]}>
                         <Text style={styles.name}>
-                            All Record (Testing)
+                            Create Admin
                         </Text>
                     </View>
                 </TouchableOpacity>
@@ -46,7 +46,7 @@ export default function AdminHome({ navigation }) {
                 <TouchableOpacity onPress={screenchangetwo}>
                     <View style={[styles.cards, styles.cardtwo]}>
                         <Text style={styles.name}>
-                          Create Record
+                          Records
                         </Text>
                     </View>
                 </TouchableOpacity>

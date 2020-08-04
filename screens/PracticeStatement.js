@@ -6,11 +6,12 @@ import Icon from 'react-native-vector-icons/Ionicons'
 import { TextInput } from 'react-native-gesture-handler';
 import * as Animatable from 'react-native-animatable';
 import ReadMore from 'react-native-read-more-text';
+import Menu from './actions/Menu';
 
 import firebase from 'firebase';
 import { List, ListItem } from 'native-base';
 
-
+import * as Analytics from 'expo-firebase-analytics';
 
 const config ={
     apiKey: "AIzaSyBHKV7x97xwDrUVnc7Z6wPCiXV8Yc-_nO8",
@@ -31,6 +32,7 @@ const config ={
  class PracticeStatement extends Component {   
     
     state = {
+        menuOpen: false,
         myIBDs: []
         
     }
@@ -44,7 +46,14 @@ const config ={
             this.setState({ myIBDs:  Object.values(snapshot.val()), inMemory:  Object.values(snapshot.val()) });
             });
 
+            Analytics.setCurrentScreen('PracticeStatementScreen');    
+
     }
+
+    onButtonPress = () => {
+        const { menuOpen } = this.state;
+          this.setState({ menuOpen: !menuOpen });
+        }
 
     searchIBD = (value) => {
         const filteredIBD = this.state.inMemory.filter(
@@ -60,6 +69,7 @@ const config ={
     }  
     
     render() {
+        const { menuOpen } = this.state;
         const {headingtwobtn} = this.props.navigation.state.params;
 
         const myitems = this.state.myIBDs.map(ibd => {
@@ -75,6 +85,7 @@ const config ={
     return (
             
             <View style={styles.screen}>
+                 {menuOpen ? <Menu isActive={false}/>: null}
             <View style={styles.containerone}>
                 <View style={styles.backbox}>
                     <TouchableOpacity style= {{flexDirection: 'row'}} onPress={() => { this.props.navigation.navigate('HomeOption') }} >
@@ -82,7 +93,7 @@ const config ={
                         <Text style ={styles.back}>Back</Text>
                     </TouchableOpacity>
 
-                    <Icon name="ios-settings" style={{fontSize:30, color: 'white', marginRight: '5%'}}/>
+                    <Icon onPress={this.onButtonPress.bind(this)} name="ios-menu" style={{fontSize:30, color: 'white', marginRight: '5%'}}/>
                 </View>
 
                 <View style={styles.headerbox}>

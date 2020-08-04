@@ -5,6 +5,7 @@ import {recordUpdate, recordCreate} from './actions';
 
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import RecordForm from './RecordForm';
+import { withNavigation } from 'react-navigation';
 
  class RecordCreation extends Component{
 
@@ -20,6 +21,8 @@ import RecordForm from './RecordForm';
             statement, supportingtext, 
             population, intervention, 
             comparator, outcome});
+
+        this.props.navigation.navigate('RecordList')   
     }
 
       render() {
@@ -109,4 +112,4 @@ const styles = StyleSheet.create({
 
 export default connect(mapStateToProps, {
     recordUpdate, recordCreate
-}) (RecordCreation);
+}) (withNavigation(RecordCreation));

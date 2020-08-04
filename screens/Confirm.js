@@ -1,10 +1,11 @@
 import React from 'react';
-import {Text, View, Modal, StyleSheet, TouchableOpacity} from 'react-native';
+import {Text, View, StyleSheet, TouchableOpacity} from 'react-native';
+import Modal from 'react-native-modal';
 
 const Confirm = ({children, visible, onAccept, onDecline}) => {
     return (
         <Modal
-            visible={visible}
+            visible={visible || false}
             transparent
             animationType="slide"
             onRequestClose={() => {}}

@@ -1,4 +1,4 @@
-import { RECORD_UPDATE, RECORD_CREATE, RECORD_SAVE_SUCCESS } from '../actions/types';
+import { RECORD_UPDATE, RECORD_CREATE, RECORD_SAVE_SUCCESS, RECORD_DELETE_SUCCESS } from '../actions/types';
 
 const INITIAL_STATE = {
     headingone: '', 
@@ -19,6 +19,8 @@ export default (state = INITIAL_STATE, action) => {
         case RECORD_CREATE:
             return INITIAL_STATE;
         case RECORD_SAVE_SUCCESS:
+            return INITIAL_STATE;
+        case RECORD_DELETE_SUCCESS:
             return INITIAL_STATE;
         default:
             return state;

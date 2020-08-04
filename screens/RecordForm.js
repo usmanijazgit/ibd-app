@@ -27,8 +27,8 @@ class RecordForm extends Component {
             </View>
 
            <Text style={styles.textContainer}>Record</Text>
+
            <View style={styles.dataInputScreen}> 
-        
             <Text style={styles.textInputHeading}>Heading One:</Text>
            
             <RNPickerSelect placeholder={{

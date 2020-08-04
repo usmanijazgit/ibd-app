@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "633888609862",
+    "firebase_url": "https://ibdtool-2a1c7.firebaseio.com",
+    "project_id": "ibdtool-2a1c7",
+    "storage_bucket": "ibdtool-2a1c7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:633888609862:android:78d6e8b9daaf7a055edc47",
+        "android_client_info": {
+          "package_name": "com.ibd.ibdapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "633888609862-uktgalqhtgbn8gvcmni8se65pnjr5nr6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCRltpjcdQarGMpKwMKGQ4UtzYMIVyugOY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "633888609862-uktgalqhtgbn8gvcmni8se65pnjr5nr6.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "633888609862-hjd9aqdqcsb6ijdfad7bthhmo536psc6.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.ibd.ibdapp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

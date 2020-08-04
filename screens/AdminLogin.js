@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, StyleSheet, TouchableOpacity} from 'react-native';
+import {Platform, View, StyleSheet, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons'
 import { withNavigation } from 'react-navigation';
 
@@ -65,7 +65,7 @@ class AdminLogin extends Component {
            
 
             <View style={styles.backbox}>
-                <TouchableOpacity style= {{flexDirection: 'row'}} onPress={() => { this.props.navigation.navigate('PatientInfo') }} >
+                <TouchableOpacity style= {{flexDirection: 'row'}} onPress={() => { this.props.navigation.goBack() }} >
                     <Icon name="ios-arrow-back" style={{fontSize:25 , color: 'white'}}/>
                     <Text style ={styles.back}>Back</Text>
                 </TouchableOpacity>
@@ -94,7 +94,7 @@ class AdminLogin extends Component {
 
             </View>
 
-            {isSuccessful ? <Success isActive={false}/>: null}
+            {isSuccessful ? <Success />: null}
 
           </View>
 
@@ -152,13 +152,15 @@ const styles = StyleSheet.create({
       mainBtn: {
         backgroundColor: '#1DDCAF',
         height: 50,
-        borderRadius: 10
+        borderRadius: 10,
+        justifyContent: 'center',
       },
       btnText: {
         color: '#2D3057',
-        fontSize: 16,
+        fontSize: 20,
         textAlign: 'center',
-        top: '30%'
+        fontWeight: "600",
+
       },
       back: {
         fontSize: 20,

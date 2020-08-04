@@ -14,6 +14,7 @@ import Login from '../screens/Login';
 import CreateRecord from '../screens/CreateRecord';
 import AdminLogin from '../screens/AdminLogin';
 // import ProjectsScreen from '../screens/ProjectsScreen';
+import PrintScreen from '../screens/PrintScreen'
 
 const HomeStack = createStackNavigator({
     
@@ -45,6 +46,9 @@ const HomeStack = createStackNavigator({
     PICO: {
         screen: PICO
     },  
+    PrintScreen: {
+        screen: PrintScreen
+    }
 
 }, {
     defaultNavigationOptions: {
@@ -60,7 +64,3 @@ const HomeStack = createStackNavigator({
 export default createAppContainer(HomeStack);
 
     
-
-
-// const HomeStack = createStackNavigator(screens);
-
