@@ -61,6 +61,14 @@ class Menu extends React.Component {
         this.props.navigation.navigate('AdminLogin');
     }
 
+    homePage = () => {
+        this.props.navigation.navigate('Home');
+    }
+
+    termsPage = () => {
+        this.props.navigation.navigate('Terms');
+    }
+
     render() {
         return (
             <AnimatedContainer
@@ -85,6 +93,18 @@ class Menu extends React.Component {
 
                 <Content>
 
+                <TouchableOpacity onPress={this.homePage.bind(this)} > 
+                    <MenuItemContainer>
+                        <MenuItemIconView>
+                            <Icon name="ios-home" size={34} color="#546bfb"/>
+                        </MenuItemIconView>
+
+                        <MenuItemContent>
+                            <MenuItemTitle>Home</MenuItemTitle>
+                        </MenuItemContent>
+
+                    </MenuItemContainer>
+                </TouchableOpacity> 
 
                 <TouchableOpacity onPress={this.adminLogin.bind(this)} >   
                     <MenuItemContainer >
@@ -98,17 +118,20 @@ class Menu extends React.Component {
                     </MenuItemContainer>
                 </TouchableOpacity> 
 
-                {/* <MenuItemContainer>
-                    <MenuItemIconView>
-                        <Icon name="ios-print" size={34} color="#546bfb"/>
-                    </MenuItemIconView>
+                <TouchableOpacity onPress={this.termsPage.bind(this)} >   
+                    <MenuItemContainer >
+                        <MenuItemIconView>
+                            <Icon name="ios-exit" size={34} color="#546bfb"/>
+                        </MenuItemIconView>
 
-                    <MenuItemContent>
-                        <MenuItemTitle onPress={this.toggleMenu, this.onPrint.bind(this)}>Print</MenuItemTitle>
-                    </MenuItemContent>
+                        <MenuItemContent >
+                            <MenuItemTitle >Exit</MenuItemTitle>
+                        </MenuItemContent>
+                    </MenuItemContainer>
+                </TouchableOpacity>
 
-                </MenuItemContainer> */}
-                    
+                
+
                 </Content>
             </AnimatedContainer>
         )

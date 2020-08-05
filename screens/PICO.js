@@ -63,6 +63,7 @@ const config ={
 
     
     render() {
+        const { myIBDs } = this.state;
         const { menuOpen } = this.state;
         const {headingtwobtn} = this.props.navigation.state.params;
 
@@ -169,7 +170,7 @@ const config ={
 
                 </ScrollView> */}
 
-                {/* <Button title="Print"></Button> */}
+                {/* <Button title="Print" onPress={() => this.props.navigation.navigate('PrintScreen', {headingtwobtn: myIBDs.ibdHeadingTwo, supportingText: myIBDs.ibdSupportingText})}></Button> */}
 
             </View>
 

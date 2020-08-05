@@ -14,15 +14,15 @@ import { withNavigation } from 'react-navigation';
             headingtwo, subheading, 
             statement, supportingtext, 
             population, intervention, 
-            comparator, outcome} = this.props;
+            comparator, outcome,otherresources, practicaltips} = this.props;
 
         this.props.recordCreate({headingone, 
             headingtwo, subheading, 
             statement, supportingtext, 
             population, intervention, 
-            comparator, outcome});
+            comparator, outcome,otherresources, practicaltips});
 
-        this.props.navigation.navigate('RecordList')   
+        //this.props.navigation.navigate('RecordList')   
     }
 
       render() {
@@ -100,13 +100,13 @@ const styles = StyleSheet.create({
         headingtwo, subheading, 
         statement, supportingtext, 
         population, intervention, 
-        comparator, outcome} = state.recordForm;
+        comparator, outcome,otherresources, practicaltips} = state.recordForm;
 
        return {headingone, 
         headingtwo, subheading, 
         statement, supportingtext, 
         population, intervention, 
-        comparator, outcome}; 
+        comparator, outcome,otherresources, practicaltips}; 
  }   
 
 

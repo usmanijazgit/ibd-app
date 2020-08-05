@@ -8,6 +8,7 @@ import PatientInfoScreen from '../screens/PatientInfoScreen';
 import HomeScreen from '../screens/HomeScreen';
 import HomeScreenOption from '../screens/HomeScreenOption';
 import PracticeStatement from '../screens/PracticeStatement';
+import SubheadingScreen from '../screens/SubheadingScreen';
 import SupportingText from '../screens/SupportingText';
 import PICO from '../screens/PICO';
 import Login from '../screens/Login';
@@ -36,6 +37,9 @@ const HomeStack = createStackNavigator({
     },
     HomeOption: {
         screen: HomeScreenOption
+    },
+    SubheadingScreen: {
+        screen: SubheadingScreen
     },
     PracticeStatement: {
         screen: PracticeStatement

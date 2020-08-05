@@ -95,13 +95,13 @@ class FloatingButton extends React.Component {
 
             <TouchableWithoutFeedback>
                 <Animated.View style= {[styles.button, styles.secondary, supportingStyle, opacity]}>
-                    <Text>Practical Tips</Text>
+                    <Text style= {{fontSize: 14, color: 'white'}}>Practical Tips</Text>
                 </Animated.View>
             </TouchableWithoutFeedback>
 
             <TouchableWithoutFeedback>
                 <Animated.View style= {[styles.button, styles.secondary, resourcesStyle, opacity]}>
-                    <Text>Other resources</Text>
+                    <Text style= {{fontSize: 14, color: 'white'}}>Other resources</Text>
                 </Animated.View>
             </TouchableWithoutFeedback>
            
@@ -139,7 +139,7 @@ const styles = StyleSheet.create({
         width: 160,
         height: 48,
         borderRadius: 15,
-        backgroundColor: '#93BAC5'
+        backgroundColor: '#C2004B'
     }
 });
 

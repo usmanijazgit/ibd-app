@@ -23,13 +23,13 @@ class RecordEdit extends Component {
             headingtwo, subheading, 
             statement, supportingtext, 
             population, intervention, 
-            comparator, outcome} = this.props;
+            comparator, outcome, otherresources, practicaltips} = this.props;
 
         this.props.recordSave({headingone, 
             headingtwo, subheading, 
             statement, supportingtext, 
             population, intervention, 
-            comparator, outcome, uid: this.props.navigation.getParam('record').uid})
+            comparator, outcome, otherresources, practicaltips, uid: this.props.navigation.getParam('record').uid})
             
             this.props.navigation.navigate('RecordList')
         }
@@ -70,13 +70,13 @@ const mapStateToProps = (state) => {
        headingtwo, subheading, 
        statement, supportingtext, 
        population, intervention, 
-       comparator, outcome} = state.recordForm;
+       comparator, outcome, otherresources, practicaltips} = state.recordForm;
 
       return {headingone, 
        headingtwo, subheading, 
        statement, supportingtext, 
        population, intervention, 
-       comparator, outcome}; 
+       comparator, outcome, otherresources, practicaltips}; 
 };   
 
 export default connect(mapStateToProps, {

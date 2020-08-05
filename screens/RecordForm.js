@@ -137,6 +137,30 @@ class RecordForm extends Component {
                 onChangeText={text => this.props.recordUpdate({prop: 'outcome', value: text})}
             />
 
+            <Text style={styles.textInputHeading}>Other Resources (Optional):</Text>
+
+            <TextInput style={styles.textInput}
+                keyboardType='default'
+                placeholderTextColor='lightgrey'
+                placeholder='Enter Other Resources'
+                autoCapitalize='none'
+                value = {this.props.otherresources}
+                onChangeText={text => this.props.recordUpdate({prop: 'otherresources', value: text})}
+                
+            />
+
+            <Text style={styles.textInputHeading}>Practical Tips (Optional):</Text>
+
+            <TextInput style={styles.textInput}
+                keyboardType='default'
+                placeholderTextColor='lightgrey'
+                placeholder='Enter Practical Tip'
+                autoCapitalize='none'
+                value = {this.props.practicaltips}
+                onChangeText={text => this.props.recordUpdate({prop: 'practicaltips', value: text})}
+                
+            />
+
         </View> 
         
       </View>
@@ -242,13 +266,13 @@ const mapStateToProps = (state) => {
        headingtwo, subheading, 
        statement, supportingtext, 
        population, intervention, 
-       comparator, outcome} = state.recordForm;
+       comparator, outcome, otherresources, practicaltips} = state.recordForm;
 
       return {headingone, 
        headingtwo, subheading, 
        statement, supportingtext, 
        population, intervention, 
-       comparator, outcome}; 
+       comparator, outcome, otherresources, practicaltips}; 
 };
 
 export default connect(mapStateToProps, {recordUpdate}) (RecordForm);

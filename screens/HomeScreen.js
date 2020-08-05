@@ -49,12 +49,12 @@ class HomeScreen extends Component {
 
             <View style={styles.containerone}>
 
-                <View style={styles.backbox}>
+                {/* <View style={styles.backbox}>
                     <TouchableOpacity style= {{flexDirection: 'row'}} onPress={this.backscreen.bind(this)}>
                         <Icon name="ios-arrow-back" style={{fontSize:25 , color: 'white'}}/>
                         <Text style ={styles.back}>Back</Text>
                     </TouchableOpacity>
-                </View>
+                </View> */}
             
 
                 <View style={styles.boxtwo}>
@@ -154,7 +154,7 @@ const styles = StyleSheet.create({
     },
     boxtwo: {
         // flex: 1,
-        marginHorizontal: 35,
+        marginHorizontal: 55,
         flexDirection: 'row',
         justifyContent:'space-between'
     },

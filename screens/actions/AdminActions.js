@@ -34,7 +34,7 @@ export const recordCreate = ({
     headingone, headingtwo, subheading, 
     statement, supportingtext, 
     population, intervention, 
-    comparator, outcome }) => {
+    comparator, outcome, otherresources, practicaltips }) => {
             
    return (dispatch) => {
 
@@ -83,10 +83,20 @@ export const recordCreate = ({
         return;
     }
 
+    if (otherresources.trim() === '') {
+        alert('Other Resources Field is Blank');
+        return;
+    }
+
+    if (practicaltips.trim() === '') {
+        alert('Practical Tips Field is Blank');
+        return;
+    }
+
     ibdRef.push({headingone, headingtwo, subheading, 
         statement, supportingtext, 
         population, intervention, 
-        comparator, outcome })
+        comparator, outcome, otherresources, practicaltips })
         .then(() => {
             dispatch({type: RECORD_CREATE });
             Actions.pop();
@@ -103,7 +113,7 @@ export const recordCreate = ({
         headingone, headingtwo, subheading, 
         statement, supportingtext, 
         population, intervention, 
-        comparator, outcome, uid }) => {
+        comparator, outcome, otherresources, practicaltips, uid }) => {
                 
        return (dispatch) => {
     
@@ -151,12 +161,22 @@ export const recordCreate = ({
             alert('Outcome Field is Blank');
             return;
         }
+
+        if (otherresources.trim() === '') {
+            alert('Other Resources Field is Blank');
+            return;
+        }
+    
+        if (practicaltips.trim() === '') {
+            alert('Practical Tips Field is Blank');
+            return;
+        }
     
         firebase.database().ref(`ibd/${uid}`)
         .set({headingone, headingtwo, subheading, 
             statement, supportingtext, 
             population, intervention, 
-            comparator, outcome })
+            comparator, outcome, otherresources, practicaltips })
             .then(() => {
                 dispatch({type: RECORD_SAVE_SUCCESS });
                 Actions.pop();

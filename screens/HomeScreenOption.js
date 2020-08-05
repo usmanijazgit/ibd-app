@@ -86,7 +86,7 @@ const config ={
         }
         const myitems = iBDList.map(ibd => {
             return(
-                <ListItem rowkey={record => record.ibdSupportingText}  onPress={() => this.props.navigation.navigate('PracticeStatement', {headingtwobtn: ibd.ibdHeadingTwo})}>
+                <ListItem rowkey={record => record.ibdSupportingText}  onPress={() => this.props.navigation.navigate('SubheadingScreen', {headingtwobtn: ibd.ibdHeadingTwo})}>
                     <Text style ={styles.listtext}>{ibd.ibdHeadingTwo}</Text>
                 </ListItem>
             )
