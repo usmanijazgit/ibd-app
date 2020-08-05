@@ -161,16 +161,9 @@ const config ={
 
             </ScrollView>
 
-                {/* <ScrollView>
-                    <Text style ={styles.listheading}>Population</Text>
-                
-                    <List>
-                        {myitems}
-                    </List>
 
-                </ScrollView> */}
 
-                {/* <Button title="Print" onPress={() => this.props.navigation.navigate('PrintScreen', {headingtwobtn: myIBDs.ibdHeadingTwo, supportingText: myIBDs.ibdSupportingText})}></Button> */}
+                <Button title="Print" onPress={() => this.props.navigation.navigate('PrintScreen', {headingtwobtn: myIBDs.ibdHeadingTwo, supportingText: myIBDs.ibdSupportingText})}></Button>
 
             </View>
 
