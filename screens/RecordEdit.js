@@ -31,7 +31,7 @@ class RecordEdit extends Component {
             population, intervention, 
             comparator, outcome, otherresources, practicaltips, uid: this.props.navigation.getParam('record').uid})
             
-            this.props.navigation.navigate('RecordList')
+            //this.props.navigation.navigate('RecordList')
         }
 
     onAccept() {

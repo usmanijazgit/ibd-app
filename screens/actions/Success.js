@@ -3,7 +3,7 @@ import styled from 'styled-components/native';
 import {View, Animated, Dimensions, Platform} from "react-native";
 
 import LottieView from 'lottie-react-native';
-// import LottieViewWeb from 'react-native-web-lottie'; 
+import LottieViewWeb from 'react-native-web-lottie'; 
 
 
 const screenHeight = Dimensions.get("window").height;
@@ -47,18 +47,18 @@ class Success extends React.Component {
                 />
             )
         } 
-        // else {
-        //     return (
-        //         <LottieViewWeb 
-        //         source={require("../../assets/lottie-checked-done.json")}
-        //         autoPlay={false}
-        //         loop={false}
-        //         ref={animation => {
-        //             this.animation = animation;
-        //         }}
-        //         />
-        //     )
-        // }
+        else {
+            return (
+                <LottieViewWeb 
+                source={require("../../assets/lottie-checked-done.json")}
+                autoPlay={false}
+                loop={false}
+                ref={animation => {
+                    this.animation = animation;
+                }}
+                />
+            )
+        }
     }
 
 

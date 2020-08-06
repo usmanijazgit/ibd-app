@@ -2,6 +2,7 @@ import firebase from 'firebase';
 import { RECORD_UPDATE, RECORD_CREATE, RECORD_FETCH_SUCCESS, RECORD_SAVE_SUCCESS, RECORD_DELETE_SUCCESS } from './types';
 import { Actions } from "react-native-router-flux";
 require('@firebase/database');
+import { withNavigation } from 'react-navigation';
 
 const config ={
     apiKey: "AIzaSyBHKV7x97xwDrUVnc7Z6wPCiXV8Yc-_nO8",
@@ -181,6 +182,7 @@ export const recordCreate = ({
                 dispatch({type: RECORD_SAVE_SUCCESS });
                 Actions.pop();
                 alert('Record Updated');
+                //this.props.navigation.navigate('RecordList')
             });
             
             

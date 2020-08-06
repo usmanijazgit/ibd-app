@@ -158,7 +158,7 @@ const styles = StyleSheet.create({
         flex: 1
     },
     containertwo: {
-        flex: 2.5,
+        flex: 2,
         backgroundColor: "#fff",
         borderTopRightRadius: 60,
         borderTopLeftRadius: 60

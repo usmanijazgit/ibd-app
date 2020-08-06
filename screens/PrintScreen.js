@@ -195,12 +195,13 @@ const config ={
 
                 <TouchableOpacity onPress={this.onPrint.bind(this)}
                   style={{
-                    backgroundColor: 'lightblue',
+                    backgroundColor: '#2197F3',
                     justifyContent: 'center',
                     alignItems: 'center',
                     width: 150,
                     height: 50,
-                    marginLeft: '30%',
+                    marginLeft: 'auto',
+                    marginRight: 10,
                     borderRadius: 5
                   }}
                 >
@@ -262,8 +263,7 @@ const config ={
 
             </ScrollView>
 
-                {/* <Button title="Print" onPress={() => { this.props.navigation.navigate('PrintScreen') }}></Button> */}
-
+                
             </View>
 
             </View>
@@ -275,14 +275,14 @@ const config ={
 
 const styles = StyleSheet.create({
     screen: {
-        flex: 1,
+        // flex: 1,
         backgroundColor: '#136Df3'
     },
     containerone: {
-        flex: 1
+        // flex: 1
     },
     containertwo: {
-        flex: 4,
+        // flex: 3.5,
         backgroundColor: "#fff",
         borderTopRightRadius: 60,
         borderTopLeftRadius: 60
@@ -293,8 +293,9 @@ const styles = StyleSheet.create({
         color: 'white',
         // fontWeight: 'bold',
         letterSpacing: 3.5,
-        marginLeft: -25,
+        // marginLeft: -25,
         marginTop: 25,
+        marginBottom: 10
     },
 
     listtext: {

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { StyleSheet, View, Text, ScrollView, TouchableOpacity} from 'react-native';
+import { StyleSheet, View, Text, ScrollView, TouchableOpacity, Animated, TouchableWithoutFeedback} from 'react-native';
 import { withNavigation } from 'react-navigation';
 import FloatingButton from '../screens/FloatingButton';
 import Menu from './actions/Menu';
@@ -52,6 +52,20 @@ const config ={
 
     }
 
+    animation = new Animated.Value(0)
+
+    toggleMenu = () => {
+        const toValue = this.open ? 0 : 1
+
+        Animated.spring(this.animation, 
+            {
+                toValue,
+                friction: 5
+            }).start();
+
+            this.open = !this.open;
+    };
+
     onButtonPress = () => {
         const { menuOpen } = this.state;
           this.setState({ menuOpen: !menuOpen });
@@ -59,12 +73,56 @@ const config ={
 
     
     render() {
+        const resourcesStyle = {
+            transform: [
+                {scale: this.animation},
+                {
+                    translateY: this.animation.interpolate({
+                        inputRange: [0, 1],
+                        outputRange: [0, -80]
+                    })
+                }
+            ]
+        };
+
+        const supportingStyle = {
+            transform: [
+                {scale: this.animation},
+                {
+                    translateY: this.animation.interpolate({
+                        inputRange: [0, 1],
+                        outputRange: [0, -140]
+                    })
+                }
+            ]
+        };
+
+        const picoStyle = {
+            transform: [
+                {scale: this.animation},
+                {
+                    translateY: this.animation.interpolate({
+                        inputRange: [0, 1],
+                        outputRange: [0, -200]
+                    })
+                }
+            ]
+        };
+
+
+    const opacity =  this.animation.interpolate({
+        inputRange: [0, 0.5, 1],
+        outputRange: [0, 0, 1]
+    })
+
+
         const { menuOpen } = this.state;
         const {headingtwobtn} = this.props.navigation.state.params;
+        const {myIBDs} = this.state;
 
-        const myitems = this.state.myIBDs.map(ibd => {
+        const myitems = myIBDs.map(ibd => {
             return(
-                <ListItem rowkey="id" onPress={() => this.props.navigation.navigate('PICO', {headingtwobtn: ibd.ibdHeadingTwo, supportingText: ibd.ibdSupportingText})}>
+                <ListItem rowkey="id">
                     <Text style ={styles.listtext}>{ibd.ibdSupportingText}</Text>
                 </ListItem>
             )
@@ -109,9 +167,41 @@ const config ={
 
                 {/* <FloatingButton /> */}
 
-                <View style= {{ paddingBottom: 65, paddingTop: 20}}>
-                    {/* <View style= {[styles.practicalbutton, styles.menu]}><Text style= {{fontSize: 16, color: 'black', fontWeight: '500'}}>Practical Tips</Text></View> */}
-                    <FloatingButton style={{width: 380}} />
+                <View style= {{ paddingBottom: 10, paddingTop: 20}}>
+                    
+
+                    <View style={[styles.container, ()=> this.props.style]}>
+
+                        <TouchableWithoutFeedback>
+                            <Animated.View style= {[styles.button, styles.secondary, supportingStyle, opacity]}>
+                                <Text style= {{fontSize: 14, color: 'white'}}>Practical Tips</Text>
+                            </Animated.View>
+                        </TouchableWithoutFeedback>
+
+                        <TouchableWithoutFeedback>
+                            <Animated.View style= {[styles.button, styles.secondary, resourcesStyle, opacity]}>
+                                <Text style= {{fontSize: 14, color: 'white'}}>Other resources</Text>
+                            </Animated.View>
+                        </TouchableWithoutFeedback>
+
+                        <TouchableWithoutFeedback onPress={this.toggleMenu}>
+                            <Animated.View style= {[styles.button, styles.menua]}>
+                            <Text style= {{fontSize: 16, color: 'white', fontWeight: '500'}}>More Information</Text>
+                            </Animated.View>
+                        </TouchableWithoutFeedback>
+
+                    </View>   
+
+                    <View style= {[styles.picobutton, styles.menu]}>
+                    
+                    <TouchableWithoutFeedback 
+                        onPress={() => this.props.navigation.navigate('PICO',
+                         {headingtwobtn: myIBDs[0].ibdHeadingTwo, supportingText: myIBDs[0].ibdSupportingText})}
+                    >
+                        <Text style= {{fontSize: 16, color: 'white', fontWeight: '500'}}>PICO</Text>
+                    </TouchableWithoutFeedback>
+                    </View>
+
                 </View>
 
             </View>
@@ -132,7 +222,7 @@ const styles = StyleSheet.create({
         flex: 1
     },
     containertwo: {
-        flex: 4,
+        flex: 3.5,
         backgroundColor: "#fff",
         borderTopRightRadius: 60,
         borderTopLeftRadius: 60
@@ -185,17 +275,43 @@ const styles = StyleSheet.create({
         marginVertical: 25,
         left: '43%'
     },
-    practicalbutton: {
+    picobutton: {
         width: 150,
         height: 60,
         borderRadius: 15,
         alignItems: 'center',
         justifyContent: 'center',
-        marginLeft: 20
+        marginLeft: 'auto',
+        marginRight: 5
     },
+
     menu: {
         backgroundColor: '#93BAC5'
     },
+
+    button: {
+        position: 'absolute',
+        marginLeft: 5,
+        width: 180,
+        height: 60,
+        borderRadius: 15,
+        alignItems: 'center',
+        justifyContent: 'center',
+        shadowRadius: 10,
+        shadowColor: '#F02A4B',
+        shadowOpacity: 0.3,
+        shadowOffset: {height: 10}
+    },
+    menua: {
+        backgroundColor: '#F02A4B'
+    },
+    secondary: {
+        width: 160,
+        height: 48,
+        borderRadius: 15,
+        backgroundColor: '#C2004B',
+        marginLeft: 15
+    }
 });
 
 

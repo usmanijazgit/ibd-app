@@ -69,7 +69,7 @@ const config ={
 
         const mypopulationitems = this.state.myIBDs.map(ibd => {
             return(
-                <ListItem rowkey="id" onPress={() => this.props.navigation.navigate('PrintScreen', {headingtwobtn: ibd.ibdHeadingTwo, supportingText: ibd.ibdSupportingText})}>
+                <ListItem rowkey="id">
                     <Text style ={styles.listtext}>{ibd.ibdPopulation} </Text>
                 </ListItem>
             )
@@ -163,7 +163,7 @@ const config ={
 
 
 
-                <Button title="Print" onPress={() => this.props.navigation.navigate('PrintScreen', {headingtwobtn: myIBDs.ibdHeadingTwo, supportingText: myIBDs.ibdSupportingText})}></Button>
+                <Button title="Print" onPress={() => this.props.navigation.navigate('PrintScreen', {headingtwobtn: myIBDs[0].ibdHeadingTwo, supportingText: myIBDs[0].ibdSupportingText})}></Button>
 
             </View>
 
@@ -183,7 +183,7 @@ const styles = StyleSheet.create({
         flex: 1
     },
     containertwo: {
-        flex: 4,
+        flex: 3,
         backgroundColor: "#fff",
         borderTopRightRadius: 60,
         borderTopLeftRadius: 60

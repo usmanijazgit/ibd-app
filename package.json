@@ -23,6 +23,7 @@
     "lottie-react-native": "^3.4.0",
     "native-base": "^2.13.12",
     "navigation": "^5.3.1",
+    "netlify": "^4.3.10",
     "pod-install": "^0.1.8",
     "react": "^16.9.0",
     "react-art": "^16.13.1",

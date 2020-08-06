@@ -10,6 +10,8 @@ const INITIAL_STATE = {
     intervention: '', 
     comparator: '',
     outcome: '',
+    otherresources: '', 
+    practicaltips: '',
 };
 
 export default (state = INITIAL_STATE, action) => {

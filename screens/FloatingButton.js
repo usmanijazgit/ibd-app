@@ -63,17 +63,6 @@ class FloatingButton extends React.Component {
             ]
         };
 
-    //     const rotation = {
-    //         transform: [
-    //             {
-    //                 rotate: this.animation.interpolate({
-    //                     inputRange: [0, 1],
-    //                     outputRange: ["0deg", "45deg"]
-    //                 })
-    //             }
-           
-    //     ]
-    // };
 
     const opacity =  this.animation.interpolate({
         inputRange: [0, 0.5, 1],
@@ -84,14 +73,6 @@ class FloatingButton extends React.Component {
         
 
         <View style={[styles.container, ()=> this.props.style]}>
-
-            {/* <FloatingButton navigate={navigate}/> */}
-
-            {/* <TouchableWithoutFeedback>
-                <Animated.View style= {[styles.button, styles.secondary, picoStyle, opacity]}>
-                    <Text>Supporting text</Text>
-                </Animated.View>
-            </TouchableWithoutFeedback> */}
 
             <TouchableWithoutFeedback>
                 <Animated.View style= {[styles.button, styles.secondary, supportingStyle, opacity]}>

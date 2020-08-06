@@ -150,7 +150,9 @@ const styles = StyleSheet.create({
       mainBtn: {
         backgroundColor: '#1D1B1A',
         height: 80,
-        borderRadius: 10
+        borderRadius: 10,
+        justifyContent: 'center',
+        alignItems: 'center'
       },
       btnText: {
         color: 'white',
