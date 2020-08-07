@@ -5,7 +5,7 @@ import {connect} from 'react-redux';
 import {recordUpdate} from './actions';
 
 import RNPickerSelect from 'react-native-picker-select';
-import firebase from 'firebase';
+import firebase from 'firebase';  
 
 class RecordForm extends Component {
     render() {
@@ -40,9 +40,9 @@ class RecordForm extends Component {
                 { label: 'Dietary Management', value: 'Dietary Management' }
                 
             ]}
-            value = {this.props.headingone}
-            selectedValue = {this.props.headingone}
-            onValueChange={text => this.props.recordUpdate({prop: 'headingone', value: text})}
+            value = {this.props.ibdHeadingOne}
+            selectedValue = {this.props.ibdHeadingOne}
+            onValueChange={text => this.props.recordUpdate({prop: 'ibdHeadingOne', value: text})}
             />
 
             <Text style={styles.textInputHeading}>Heading Two:</Text>
@@ -51,19 +51,19 @@ class RecordForm extends Component {
                 placeholderTextColor='lightgrey'
                 placeholder='Enter Heading Two'
                 autoCapitalize='none'
-                value = {this.props.headingtwo}
-                onChangeText={text => this.props.recordUpdate({prop: 'headingtwo', value: text})}
+                value = {this.props.ibdHeadingTwo}
+                onChangeText={text => this.props.recordUpdate({prop: 'ibdHeadingTwo', value: text})}
             />
 
-            <Text style={styles.textInputHeading}>Sub-Heading (Optional):</Text>
+            <Text style={styles.textInputHeading}>Sub-Heading:</Text>
 
             <TextInput style={styles.textInput}
                 keyboardType='default'
                 placeholderTextColor='lightgrey'
                 placeholder='Enter Sub-Heading'
                 autoCapitalize='none'
-                value = {this.props.subheading}
-                onChangeText={text => this.props.recordUpdate({prop: 'subheading', value: text})}
+                value = {this.props.ibdSubHeading}
+                onChangeText={text => this.props.recordUpdate({prop: 'ibdSubHeading', value: text})}
                 
             />
 
@@ -74,8 +74,8 @@ class RecordForm extends Component {
                 placeholderTextColor='lightgrey'
                 placeholder='Enter Practice Statement'
                 autoCapitalize='none'
-                value = {this.props.statement}
-                onChangeText={text => this.props.recordUpdate({prop: 'statement', value: text})}
+                value = {this.props.ibdStatement}
+                onChangeText={text => this.props.recordUpdate({prop: 'ibdStatement', value: text})}
                
             />
 
@@ -86,8 +86,8 @@ class RecordForm extends Component {
                 placeholderTextColor='lightgrey'
                 placeholder='Enter Supporting Text'
                 autoCapitalize='none'
-                value = {this.props.supportingtext}
-                onChangeText={text => this.props.recordUpdate({prop: 'supportingtext', value: text})}
+                value = {this.props.ibdSupportingText}
+                onChangeText={text => this.props.recordUpdate({prop: 'ibdSupportingText', value: text})}
             />
 
             <Text style={styles.textInputHeading}>Population:</Text>
@@ -97,8 +97,8 @@ class RecordForm extends Component {
                 placeholderTextColor='lightgrey'
                 placeholder='Enter Population'
                 autoCapitalize='none'
-                value = {this.props.population}
-                onChangeText={text => this.props.recordUpdate({prop: 'population', value: text})}
+                value = {this.props.ibdPopulation}
+                onChangeText={text => this.props.recordUpdate({prop: 'ibdPopulation', value: text})}
                
             />
 
@@ -109,8 +109,8 @@ class RecordForm extends Component {
                 placeholderTextColor='lightgrey'
                 placeholder='Enter Intervention'
                 autoCapitalize='none'
-                value = {this.props.intervention}
-                onChangeText={text => this.props.recordUpdate({prop: 'intervention', value: text})}
+                value = {this.props.ibdIntervention}
+                onChangeText={text => this.props.recordUpdate({prop: 'ibdIntervention', value: text})}
                
             />
 
@@ -121,8 +121,8 @@ class RecordForm extends Component {
                 placeholderTextColor='lightgrey'
                 placeholder='Enter Comparator'
                 autoCapitalize='none'
-                value = {this.props.comparator}
-                onChangeText={text => this.props.recordUpdate({prop: 'comparator', value: text})}
+                value = {this.props.ibdComparator}
+                onChangeText={text => this.props.recordUpdate({prop: 'ibdComparator', value: text})}
                
             />
 
@@ -133,31 +133,31 @@ class RecordForm extends Component {
                 placeholderTextColor='lightgrey'
                 placeholder='Enter Outcome'
                 autoCapitalize='none'
-                value = {this.props.outcome}
-                onChangeText={text => this.props.recordUpdate({prop: 'outcome', value: text})}
+                value = {this.props.ibdOutcome}
+                onChangeText={text => this.props.recordUpdate({prop: 'ibdOutcome', value: text})}
             />
 
-            <Text style={styles.textInputHeading}>Other Resources (Optional):</Text>
+            <Text style={styles.textInputHeading}>Other Resources:</Text>
 
             <TextInput style={styles.textInput}
                 keyboardType='default'
                 placeholderTextColor='lightgrey'
                 placeholder='Enter Other Resources'
                 autoCapitalize='none'
-                value = {this.props.otherresources}
-                onChangeText={text => this.props.recordUpdate({prop: 'otherresources', value: text})}
+                value = {this.props.ibdOtherResources}
+                onChangeText={text => this.props.recordUpdate({prop: 'ibdOtherResources', value: text})}
                 
             />
 
-            <Text style={styles.textInputHeading}>Practical Tips (Optional):</Text>
+            <Text style={styles.textInputHeading}>Practical Tips:</Text>
 
             <TextInput style={styles.textInput}
                 keyboardType='default'
                 placeholderTextColor='lightgrey'
                 placeholder='Enter Practical Tip'
                 autoCapitalize='none'
-                value = {this.props.practicaltips}
-                onChangeText={text => this.props.recordUpdate({prop: 'practicaltips', value: text})}
+                value = {this.props.ibdPracticalTips}
+                onChangeText={text => this.props.recordUpdate({prop: 'ibdPracticalTips', value: text})}
                 
             />
 
@@ -262,17 +262,15 @@ const pickerSelectStyles = StyleSheet.create({
     });
 
 const mapStateToProps = (state) => {
-    const {headingone, 
-       headingtwo, subheading, 
-       statement, supportingtext, 
-       population, intervention, 
-       comparator, outcome, otherresources, practicaltips} = state.recordForm;
+    const {ibdHeadingOne, ibdHeadingTwo, ibdSubHeading, 
+        ibdStatement, ibdSupportingText, 
+        ibdPopulation, ibdIntervention, 
+        ibdComparator, ibdOutcome, ibdOtherResources, ibdPracticalTips} = state.recordForm;
 
-      return {headingone, 
-       headingtwo, subheading, 
-       statement, supportingtext, 
-       population, intervention, 
-       comparator, outcome, otherresources, practicaltips}; 
+      return {ibdHeadingOne, ibdHeadingTwo, ibdSubHeading, 
+        ibdStatement, ibdSupportingText, 
+        ibdPopulation, ibdIntervention, 
+        ibdComparator, ibdOutcome, ibdOtherResources, ibdPracticalTips}; 
 };
 
 export default connect(mapStateToProps, {recordUpdate}) (RecordForm);

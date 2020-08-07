@@ -172,13 +172,19 @@ const config ={
 
                     <View style={[styles.container, ()=> this.props.style]}>
 
-                        <TouchableWithoutFeedback>
+                    <TouchableWithoutFeedback
+                            onPress={() => this.props.navigation.navigate('PracticalTips',
+                            {headingtwobtn: myIBDs[0].ibdHeadingTwo, supportingText: myIBDs[0].ibdSupportingText})}
+                        >
                             <Animated.View style= {[styles.button, styles.secondary, supportingStyle, opacity]}>
                                 <Text style= {{fontSize: 14, color: 'white'}}>Practical Tips</Text>
                             </Animated.View>
                         </TouchableWithoutFeedback>
 
-                        <TouchableWithoutFeedback>
+                        <TouchableWithoutFeedback
+                            onPress={() => this.props.navigation.navigate('OtherResources',
+                            {headingtwobtn: myIBDs[0].ibdHeadingTwo, supportingText: myIBDs[0].ibdSupportingText})}
+                        >
                             <Animated.View style= {[styles.button, styles.secondary, resourcesStyle, opacity]}>
                                 <Text style= {{fontSize: 14, color: 'white'}}>Other resources</Text>
                             </Animated.View>

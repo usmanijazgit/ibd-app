@@ -1,17 +1,17 @@
 import { RECORD_UPDATE, RECORD_CREATE, RECORD_SAVE_SUCCESS, RECORD_DELETE_SUCCESS } from '../actions/types';
 
 const INITIAL_STATE = {
-    headingone: '', 
-    headingtwo: '', 
-    subheading: '', 
-    statement: '',
-    supportingtext: '', 
-    population: '',
-    intervention: '', 
-    comparator: '',
-    outcome: '',
-    otherresources: '', 
-    practicaltips: '',
+    ibdHeadingOne: '', 
+    ibdHeadingTwo: '', 
+    ibdSubHeading: '', 
+    ibdStatement: '', 
+    ibdSupportingText: '', 
+    ibdPopulation: '', 
+    ibdIntervention: '', 
+    ibdComparator: '', 
+    ibdOutcome: '', 
+    ibdOtherResources: '', 
+    ibdPracticalTips: ''
 };
 
 export default (state = INITIAL_STATE, action) => {

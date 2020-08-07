@@ -10,17 +10,15 @@ import { withNavigation } from 'react-navigation';
  class RecordCreation extends Component{
 
     onPressAdd() {
-        const {headingone, 
-            headingtwo, subheading, 
-            statement, supportingtext, 
-            population, intervention, 
-            comparator, outcome,otherresources, practicaltips} = this.props;
+        const {ibdHeadingOne, ibdHeadingTwo, ibdSubHeading, 
+            ibdStatement, ibdSupportingText, 
+            ibdPopulation, ibdIntervention, 
+            ibdComparator, ibdOutcome, ibdOtherResources, ibdPracticalTips} = this.props;
 
-        this.props.recordCreate({headingone, 
-            headingtwo, subheading, 
-            statement, supportingtext, 
-            population, intervention, 
-            comparator, outcome,otherresources, practicaltips});
+        this.props.recordCreate({ibdHeadingOne, ibdHeadingTwo, ibdSubHeading, 
+            ibdStatement, ibdSupportingText, 
+            ibdPopulation, ibdIntervention, 
+            ibdComparator, ibdOutcome, ibdOtherResources, ibdPracticalTips});
 
         //this.props.navigation.navigate('RecordList')   
     }
@@ -96,17 +94,15 @@ const styles = StyleSheet.create({
 
 
  const mapStateToProps = (state) => {
-     const {headingone, 
-        headingtwo, subheading, 
-        statement, supportingtext, 
-        population, intervention, 
-        comparator, outcome,otherresources, practicaltips} = state.recordForm;
+     const {ibdHeadingOne, ibdHeadingTwo, ibdSubHeading, 
+        ibdStatement, ibdSupportingText, 
+        ibdPopulation, ibdIntervention, 
+        ibdComparator, ibdOutcome, ibdOtherResources, ibdPracticalTips} = state.recordForm;
 
-       return {headingone, 
-        headingtwo, subheading, 
-        statement, supportingtext, 
-        population, intervention, 
-        comparator, outcome,otherresources, practicaltips}; 
+       return {ibdHeadingOne, ibdHeadingTwo, ibdSubHeading, 
+        ibdStatement, ibdSupportingText, 
+        ibdPopulation, ibdIntervention, 
+        ibdComparator, ibdOutcome, ibdOtherResources, ibdPracticalTips}; 
  }   
 
 

@@ -11,6 +11,8 @@ import PracticeStatement from '../screens/PracticeStatement';
 import SubheadingScreen from '../screens/SubheadingScreen';
 import SupportingText from '../screens/SupportingText';
 import PICO from '../screens/PICO';
+import OtherResources from '../screens/OtherResources';
+import PracticalTips from '../screens/PracticalTips';
 import Login from '../screens/Login';
 import CreateRecord from '../screens/CreateRecord';
 import AdminLogin from '../screens/AdminLogin';
@@ -50,6 +52,12 @@ const HomeStack = createStackNavigator({
     PICO: {
         screen: PICO
     },  
+    OtherResources: {
+        screen: OtherResources
+    },
+    PracticalTips: {
+        screen: PracticalTips
+    },
     PrintScreen: {
         screen: PrintScreen
     }

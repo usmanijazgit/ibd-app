@@ -4,18 +4,19 @@ import { withNavigation } from 'react-navigation';
  
 class ListItem extends Component {
 
+
   render() {
-   const { headingone } = this.props.record;
-   const { statement } = this.props.record;
+   const { ibdHeadingOne } = this.props.record;
+   const { ibdStatement } = this.props.record;
  
     return (
 
       <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate('RecordEdit', {record: this.props.record})}>
         <View style={styles.containerStyle}>
           <Text style={styles.titleStyle}>
-            <Text style={{fontWeight: "bold"}}>{headingone}</Text>
+            <Text style={{fontWeight: "bold"}}>{ibdHeadingOne}</Text>
             {"\n"}
-            <Text>{statement}</Text>
+            <Text>{ibdStatement}</Text>
             
           </Text>
         </View>

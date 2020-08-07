@@ -157,8 +157,7 @@ const styles = StyleSheet.create({
       btnText: {
         color: 'white',
         fontSize: 18,
-        textAlign: 'center',
-        top: '35%'
+        textAlign: 'center'
       },
     back: {
         fontSize: 20,

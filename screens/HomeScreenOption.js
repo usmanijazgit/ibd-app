@@ -49,7 +49,7 @@ const config ={
             this.setState({ myIBDs:  Object.values(snapshot.val()), inMemory:  Object.values(snapshot.val()), isLoading: false});
         });
 
-        Analytics.setCurrentScreen('HomeOptionScreen');
+        Analytics.setCurrentScreen('HomeOptionScreen', 'HomeOptionScreen');
 
     }
 

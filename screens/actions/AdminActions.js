@@ -32,72 +32,72 @@ export const recordUpdate = ({prop, value}) => {
 };
 
 export const recordCreate = ({
-    headingone, headingtwo, subheading, 
-    statement, supportingtext, 
-    population, intervention, 
-    comparator, outcome, otherresources, practicaltips }) => {
+    ibdHeadingOne, ibdHeadingTwo, ibdSubHeading, 
+    ibdStatement, ibdSupportingText, 
+    ibdPopulation, ibdIntervention, 
+    ibdComparator, ibdOutcome, ibdOtherResources, ibdPracticalTips }) => {
             
    return (dispatch) => {
 
-    if (headingone.trim() === '') {
+    if (ibdHeadingOne.trim() === '') {
         alert('Heading One Field is Blank');
         return;
     }
 
-    if (headingtwo.trim() === '') {
+    if (ibdHeadingTwo.trim() === '') {
         alert('Heading Two Field is Blank');
         return;
     }
 
-    if (subheading.trim() === '') {
+    if (ibdSubHeading.trim() === '') {
         alert('Subheading Field is Blank');
         return;
     }
 
-    if (statement.trim() === '') {
+    if (ibdStatement.trim() === '') {
         alert('Statement Field is Blank');
         return;
     }
 
-    if (supportingtext.trim() === '') {
+    if (ibdSupportingText.trim() === '') {
         alert('Supporting Text Field is Blank');
         return;
     }
 
-    if (population.trim() === '') {
+    if (ibdPopulation.trim() === '') {
         alert('Population Field is Blank');
         return;
     }
 
-    if (intervention.trim() === '') {
+    if (ibdIntervention.trim() === '') {
         alert('Intervention Field is Blank');
         return;
     }
 
-    if (comparator.trim() === '') {
+    if (ibdComparator.trim() === '') {
         alert('Comparator Field is Blank');
         return;
     }
 
-    if (outcome.trim() === '') {
+    if (ibdOutcome.trim() === '') {
         alert('Outcome Field is Blank');
         return;
     }
 
-    if (otherresources.trim() === '') {
+    if (ibdOtherResources.trim() === '') {
         alert('Other Resources Field is Blank');
         return;
     }
 
-    if (practicaltips.trim() === '') {
+    if (ibdPracticalTips.trim() === '') {
         alert('Practical Tips Field is Blank');
         return;
     }
 
-    ibdRef.push({headingone, headingtwo, subheading, 
-        statement, supportingtext, 
-        population, intervention, 
-        comparator, outcome, otherresources, practicaltips })
+    ibdRef.push({ibdHeadingOne, ibdHeadingTwo, ibdSubHeading, 
+        ibdStatement, ibdSupportingText, 
+        ibdPopulation, ibdIntervention, 
+        ibdComparator, ibdOutcome, ibdOtherResources, ibdPracticalTips })
         .then(() => {
             dispatch({type: RECORD_CREATE });
             Actions.pop();
@@ -111,73 +111,73 @@ export const recordCreate = ({
     };
 
     export const recordSave = ({
-        headingone, headingtwo, subheading, 
-        statement, supportingtext, 
-        population, intervention, 
-        comparator, outcome, otherresources, practicaltips, uid }) => {
+    ibdHeadingOne, ibdHeadingTwo, ibdSubHeading, 
+    ibdStatement, ibdSupportingText, 
+    ibdPopulation, ibdIntervention, 
+    ibdComparator, ibdOutcome, ibdOtherResources, ibdPracticalTips, uid }) => {
                 
        return (dispatch) => {
     
-        if (headingone.trim() === '') {
+        if (ibdHeadingOne.trim() === '') {
             alert('Heading One Field is Blank');
             return;
         }
     
-        if (headingtwo.trim() === '') {
+        if (ibdHeadingTwo.trim() === '') {
             alert('Heading Two Field is Blank');
             return;
         }
     
-        if (subheading.trim() === '') {
+        if (ibdSubHeading.trim() === '') {
             alert('Subheading Field is Blank');
             return;
         }
     
-        if (statement.trim() === '') {
+        if (ibdStatement.trim() === '') {
             alert('Statement Field is Blank');
             return;
         }
     
-        if (supportingtext.trim() === '') {
+        if (ibdSupportingText.trim() === '') {
             alert('Supporting Text Field is Blank');
             return;
         }
     
-        if (population.trim() === '') {
+        if (ibdPopulation.trim() === '') {
             alert('Population Field is Blank');
             return;
         }
     
-        if (intervention.trim() === '') {
+        if (ibdIntervention.trim() === '') {
             alert('Intervention Field is Blank');
             return;
         }
     
-        if (comparator.trim() === '') {
+        if (ibdComparator.trim() === '') {
             alert('Comparator Field is Blank');
             return;
         }
     
-        if (outcome.trim() === '') {
+        if (ibdOutcome.trim() === '') {
             alert('Outcome Field is Blank');
             return;
         }
-
-        if (otherresources.trim() === '') {
+    
+        if (ibdOtherResources.trim() === '') {
             alert('Other Resources Field is Blank');
             return;
         }
     
-        if (practicaltips.trim() === '') {
+        if (ibdPracticalTips.trim() === '') {
             alert('Practical Tips Field is Blank');
             return;
         }
     
         firebase.database().ref(`ibd/${uid}`)
-        .set({headingone, headingtwo, subheading, 
-            statement, supportingtext, 
-            population, intervention, 
-            comparator, outcome, otherresources, practicaltips })
+        .set({ibdHeadingOne, ibdHeadingTwo, ibdSubHeading, 
+            ibdStatement, ibdSupportingText, 
+            ibdPopulation, ibdIntervention, 
+            ibdComparator, ibdOutcome, ibdOtherResources, ibdPracticalTips })
             .then(() => {
                 dispatch({type: RECORD_SAVE_SUCCESS });
                 Actions.pop();

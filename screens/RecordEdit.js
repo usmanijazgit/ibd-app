@@ -1,6 +1,6 @@
 import _ from 'lodash';
-import React, {Component} from 'react';
-import { StyleSheet, View, Button} from 'react-native';
+import React, {Component } from 'react';
+import { Modal, StyleSheet, View, Button} from 'react-native';
 import RecordForm from './RecordForm';
 import {recordUpdate, recordSave, recordDelete} from './actions';
 import {connect} from 'react-redux';
@@ -19,17 +19,15 @@ class RecordEdit extends Component {
     }
 
     onPressSave() {
-        const {headingone, 
-            headingtwo, subheading, 
-            statement, supportingtext, 
-            population, intervention, 
-            comparator, outcome, otherresources, practicaltips} = this.props;
+        const {ibdHeadingOne, ibdHeadingTwo, ibdSubHeading, 
+            ibdStatement, ibdSupportingText, 
+            ibdPopulation, ibdIntervention, 
+            ibdComparator, ibdOutcome, ibdOtherResources, ibdPracticalTips} = this.props;
 
-        this.props.recordSave({headingone, 
-            headingtwo, subheading, 
-            statement, supportingtext, 
-            population, intervention, 
-            comparator, outcome, otherresources, practicaltips, uid: this.props.navigation.getParam('record').uid})
+        this.props.recordSave({ibdHeadingOne, ibdHeadingTwo, ibdSubHeading, 
+            ibdStatement, ibdSupportingText, 
+            ibdPopulation, ibdIntervention, 
+            ibdComparator, ibdOutcome, ibdOtherResources, ibdPracticalTips, uid: this.props.navigation.getParam('record').uid})
             
             //this.props.navigation.navigate('RecordList')
         }
@@ -66,17 +64,15 @@ class RecordEdit extends Component {
 }
 
 const mapStateToProps = (state) => {
-    const {headingone, 
-       headingtwo, subheading, 
-       statement, supportingtext, 
-       population, intervention, 
-       comparator, outcome, otherresources, practicaltips} = state.recordForm;
+    const {ibdHeadingOne, ibdHeadingTwo, ibdSubHeading, 
+        ibdStatement, ibdSupportingText, 
+        ibdPopulation, ibdIntervention, 
+        ibdComparator, ibdOutcome, ibdOtherResources, ibdPracticalTips} = state.recordForm;
 
-      return {headingone, 
-       headingtwo, subheading, 
-       statement, supportingtext, 
-       population, intervention, 
-       comparator, outcome, otherresources, practicaltips}; 
+      return {ibdHeadingOne, ibdHeadingTwo, ibdSubHeading, 
+        ibdStatement, ibdSupportingText, 
+        ibdPopulation, ibdIntervention, 
+        ibdComparator, ibdOutcome, ibdOtherResources, ibdPracticalTips}; 
 };   
 
 export default connect(mapStateToProps, {

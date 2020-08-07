@@ -88,7 +88,7 @@ const config ={
                  {menuOpen ? <Menu isActive={false}/>: null}
             <View style={styles.containerone}>
                 <View style={styles.backbox}>
-                    <TouchableOpacity style= {{flexDirection: 'row'}} onPress={() => { this.props.navigation.navigate('HomeOption') }} >
+                    <TouchableOpacity style= {{flexDirection: 'row'}} onPress={() => { this.props.navigation.navigate('SubheadingScreen') }} >
                         <Icon name="ios-arrow-back" style={{fontSize:25 , color: 'white'}}/>
                         <Text style ={styles.back}>Back</Text>
                     </TouchableOpacity>
